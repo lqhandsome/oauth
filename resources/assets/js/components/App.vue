@@ -1,11 +1,10 @@
 <template>
     <div class="app" id="app">
         <div class="panel-body">
-            {{title}}
-            <router-link to="/sms">sms</router-link>
             <Github></Github>
             <Weibo></Weibo>
             <router-view></router-view>
+            <router-link to="/sms">手机验证码登录</router-link>
 
         </div>
     </div>

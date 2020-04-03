@@ -1,8 +1,9 @@
 <template>
     <div class="app" id="SMS">
-        <form action="">
+        <form action="" v-show="!aaa">
             <div class="inputMobile" v-show="hidden">
-                <input type="text" v-model="mobile"  >手机号码
+                <label for="mobile" >手机号码:</label>
+                <input type="text" v-model="mobile"  id="mobile">
                 <span>{{validations.mobile.text}}</span>
             </div>
 
@@ -11,14 +12,17 @@
             </div>
 
             <div id="inputCode">
-                <input type="text" v-if="!hidden" placeholder="请输入验证码 5分钟内有效！">
+                <input type="text" v-model="code" v-if="!hidden" placeholder="请输入验证码 5分钟内有效！">
             </div>
             <div v-show="!hidden">
-                <button >注册</button>
+                <button v-on:click="login()">登录</button>
+                <p>没有注册会自动为您注册</p>
             </div>
-
-            <p>没有注册会自动为您注册</p>
         </form>
+        <div v-show="aaa">
+            <a href="/">进入首页</a>
+        </div>
+
     </div>
 </template>
 
@@ -34,6 +38,8 @@
                 'title':'hello world',
                 'hidden':true,
                 'mobile':'',
+                'code':'',
+                'aaa':'',
                 validations:{
                     mobile:{
                         is_valid: true,
@@ -46,8 +52,21 @@
             action:function () {
                     if(this.vailMobile()) {
                         this.hidden = false;
+                        axios
+                            .get('http://oauth.lqlovehai.com/mobile?mobile='+this.mobile)
+                            .then(
+                            )
+                            .catch(function (error) { // 请求失败处理
+                                console.log(error);
+                            });
                     }
-
+            },
+            login:function () {
+                    axios.get('http://oauth.lqlovehai.com/codeLogin?code='+this.code+'&mobile='+this.mobile).then(
+                    response=>(this.aaa = response.data.code =='success' ? true:false ,console.log(1))
+                        ).catch(function (error) {
+                        console.log(error);
+                    })
             },
             vailMobile:function () {
                 let validFormMobile = true;
@@ -60,6 +79,7 @@
                     this.validations.mobile.is_valid = true;
                     this.validations.mobile.text = '';
                 }
+                return validFormMobile;
             }
         }
 

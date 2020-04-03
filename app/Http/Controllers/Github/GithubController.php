@@ -5,22 +5,19 @@ namespace App\Http\Controllers\Github;
 use Cache;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Mockery\Exception;
-use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use Socialite;
 use GuzzleHttp\Client;
-use Whoops\Exception\ErrorException;
 use App\User;
-use Redis;
 
 class GithubController extends Controller
 {
     private $GITHUB_CLIENT_ID = 'e0dcea40a90ff58b7ce3';
     private $GITHUB_SECRET = 'f4cc13c89cceab9e9917370fbbf2586c33744320';
-    //返回Code
+    //返回github Code
     public function getToken(Request $request)
     {
-        dd(config('services.github'));
         $code = $request->input('code');
         $client = new Client();
         $res = $client->request('POST', 'https://github.com/login/oauth/access_token',
@@ -30,12 +27,10 @@ class GithubController extends Controller
                   'client_secret'=>$this->GITHUB_SECRET,
                   'code'=>$code,
               ],
-
               'headers' => [
                   "Accept"=>"application/json"
               ]
-          ]
-);
+          ]);
         $token =  json_decode($res->getBody()->getContents())->access_token;
         $getGithub = new Client();
         $githubUser = $getGithub->request('GET','https://api.github.com/user',
@@ -95,18 +90,16 @@ class GithubController extends Controller
                 'uid' => $uid,
             ]
         ]);
-        $weiboToken =  \GuzzleHttp\json_decode($res->getBody());
+        $weiboToken =  json_decode($res->getBody());
         return $weiboToken;
 
     }
     //发送验证码
-    public function mobile()
+    public function mobile(Request $request)
     {
-        $mobile = '17538386243';
-        $code = random_int(000000,999999);
-        $use = User::where('id',2)->get();
-        Cache::store('redis')->put('code', $use, 600);
-        dd(Cache::store('redis')->get('code'));
+        $mobile = $request->input('mobile');
+        $code = random_int(100000,999999);
+         Cache::store('redis')->set($mobile, $code, 300);
         $content = "登录验证码：{$code}，如非本人操作，请忽略此短信。";
         $appkey = 'f39dcfbdcb6faa6937bea28973cfef08';
         $client = new Client();
@@ -114,20 +107,42 @@ class GithubController extends Controller
         try{
             $res = $client->request('POST',$url,[
                 'form_params' => [
-                    'content' => iconv('UTF-8','GBK',$content),
-                    'mobile' => $mobile,
-                    'apikey' => $appkey,
+                            'content' => iconv('UTF-8','GBK',$content),
+                            'mobile' => $mobile,
+                            'apikey' => $appkey,
                 ],
-
             ]);
-        } catch (Exception $e)
-        {
+        } catch (Exception $e) {
             print_r($e->getMessage());  //输出捕获的异常消息
         }
-
-        dd(json_decode($res->getBody()->getContents()));
-
-
+        if(json_decode($res->getBody()->getContents())->result == 0) {
+            return  response()->json(['message'=> 'success'],200);
+        }
+        return response()->json(['message'=>'error'],500);
+    }
+    //验证码注册/登录
+    public function codeLogin(Request $request)
+    {
+        $mobile = $request->input('mobile');
+        $code= $request->input('code');
+        if(empty($mobile) || empty($code)) {
+            return response()->json(['code'=>'error','message'=>'参数有误']);
+        }
+        if($code != Cache::store('redis')->get($mobile)) {
+            return response()->json(['code'=>'error','message'=>'验证码错误']);
+        }
+        $user = User::where('mobile',$mobile)->first();
+        if($user == null ) {
+            $newUser = new User();
+            $newUser->name = $mobile;
+            $newUser->mobile = (int)$mobile;
+            $newUser->email = '';
+            $newUser->password = '';
+            $newUser->save();
+            $user = $newUser;
+        }
+        Auth::login($user);
+        return response()->json(['code' => 'success','message' => '登录成功']);
     }
     public function response(Request $request)
     {

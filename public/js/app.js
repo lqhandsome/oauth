@@ -1378,8 +1378,7 @@ function applyToTag (styleElement, obj) {
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(14);
-module.exports = __webpack_require__(55);
+module.exports = __webpack_require__(14);
 
 
 /***/ }),
@@ -14550,7 +14549,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -14927,14 +14925,13 @@ var render = function() {
       "div",
       { staticClass: "panel-body" },
       [
-        _vm._v("\n        " + _vm._s(_vm.title) + "\n        "),
-        _c("router-link", { attrs: { to: "/sms" } }, [_vm._v("sms")]),
-        _vm._v(" "),
         _c("Github"),
         _vm._v(" "),
         _c("Weibo"),
         _vm._v(" "),
-        _c("router-view")
+        _c("router-view"),
+        _vm._v(" "),
+        _c("router-link", { attrs: { to: "/sms" } }, [_vm._v("手机验证码登录")])
       ],
       1
     )
@@ -17975,6 +17972,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -17987,6 +17988,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             'title': 'hello world',
             'hidden': true,
             'mobile': '',
+            'code': '',
+            'aaa': '',
             validations: {
                 mobile: {
                     is_valid: true,
@@ -18000,7 +18003,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         action: function action() {
             if (this.vailMobile()) {
                 this.hidden = false;
+                axios.get('http://oauth.lqlovehai.com/mobile?mobile=' + this.mobile).then().catch(function (error) {
+                    // 请求失败处理
+                    console.log(error);
+                });
             }
+        },
+        login: function login() {
+            var _this = this;
+
+            axios.get('http://oauth.lqlovehai.com/codeLogin?code=' + this.code + '&mobile=' + this.mobile).then(function (response) {
+                return _this.aaa = response.data.code == 'success' ? true : false, console.log(1);
+            }).catch(function (error) {
+                console.log(error);
+            });
         },
         vailMobile: function vailMobile() {
             var validFormMobile = true;
@@ -18013,6 +18029,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.validations.mobile.is_valid = true;
                 this.validations.mobile.text = '';
             }
+            return validFormMobile;
         }
     }
 
@@ -18027,96 +18044,154 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "app", attrs: { id: "SMS" } }, [
-    _c("form", { attrs: { action: "" } }, [
-      _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.hidden,
-              expression: "hidden"
-            }
-          ],
-          staticClass: "inputMobile"
-        },
-        [
-          _c("input", {
+    _c(
+      "form",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !_vm.aaa,
+            expression: "!aaa"
+          }
+        ],
+        attrs: { action: "" }
+      },
+      [
+        _c(
+          "div",
+          {
             directives: [
               {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.mobile,
-                expression: "mobile"
+                name: "show",
+                rawName: "v-show",
+                value: _vm.hidden,
+                expression: "hidden"
               }
             ],
-            attrs: { type: "text" },
-            domProps: { value: _vm.mobile },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+            staticClass: "inputMobile"
+          },
+          [
+            _c("label", { attrs: { for: "mobile" } }, [_vm._v("手机号码:")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.mobile,
+                  expression: "mobile"
                 }
-                _vm.mobile = $event.target.value
+              ],
+              attrs: { type: "text", id: "mobile" },
+              domProps: { value: _vm.mobile },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.mobile = $event.target.value
+                }
               }
-            }
-          }),
-          _vm._v("手机号码\n            "),
-          _c("span", [_vm._v(_vm._s(_vm.validations.mobile.text))])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.hidden,
-              expression: "hidden"
-            }
-          ],
-          attrs: { id: "getCode" }
-        },
-        [
-          _c("input", {
-            attrs: { type: "button", value: "获取验证码" },
-            on: {
-              click: function($event) {
-                return _vm.action()
-              }
-            }
-          })
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { attrs: { id: "inputCode" } }, [
-        !_vm.hidden
-          ? _c("input", {
-              attrs: { type: "text", placeholder: "请输入验证码 5分钟内有效！" }
-            })
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: !_vm.hidden,
-              expression: "!hidden"
-            }
+            }),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(_vm.validations.mobile.text))])
           ]
-        },
-        [_c("button", [_vm._v("注册")])]
-      ),
-      _vm._v(" "),
-      _c("p", [_vm._v("没有注册会自动为您注册")])
-    ])
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.hidden,
+                expression: "hidden"
+              }
+            ],
+            attrs: { id: "getCode" }
+          },
+          [
+            _c("input", {
+              attrs: { type: "button", value: "获取验证码" },
+              on: {
+                click: function($event) {
+                  return _vm.action()
+                }
+              }
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { attrs: { id: "inputCode" } }, [
+          !_vm.hidden
+            ? _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.code,
+                    expression: "code"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  placeholder: "请输入验证码 5分钟内有效！"
+                },
+                domProps: { value: _vm.code },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.code = $event.target.value
+                  }
+                }
+              })
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: !_vm.hidden,
+                expression: "!hidden"
+              }
+            ]
+          },
+          [
+            _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    return _vm.login()
+                  }
+                }
+              },
+              [_vm._v("登录")]
+            ),
+            _vm._v(" "),
+            _c("p", [_vm._v("没有注册会自动为您注册")])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          { name: "show", rawName: "v-show", value: _vm.aaa, expression: "aaa" }
+        ]
+      },
+      [_c("a", { attrs: { href: "/" } }, [_vm._v("进入首页")])]
+    )
   ])
 }
 var staticRenderFns = []
@@ -18128,12 +18203,6 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-729a6d72", module.exports)
   }
 }
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed: ModuleBuildError: Module build failed: ValidationError: Invalid options object. Sass Loader has been initialized using an options object that does not match the API schema.\n - options has an unknown property 'outputStyle'. These properties are valid:\n   object { implementation?, sassOptions?, prependData?, sourceMap?, webpackImporter? }\n    at validate (/www/wwwroot/oauth/node_modules/sass-loader/node_modules/schema-utils/dist/validate.js:85:11)\n    at Object.loader (/www/wwwroot/oauth/node_modules/sass-loader/dist/index.js:36:28)\n    at runLoaders (/www/wwwroot/oauth/node_modules/webpack/lib/NormalModule.js:195:19)\n    at /www/wwwroot/oauth/node_modules/loader-runner/lib/LoaderRunner.js:367:11\n    at /www/wwwroot/oauth/node_modules/loader-runner/lib/LoaderRunner.js:233:18\n    at runSyncOrAsync (/www/wwwroot/oauth/node_modules/loader-runner/lib/LoaderRunner.js:143:3)\n    at iterateNormalLoaders (/www/wwwroot/oauth/node_modules/loader-runner/lib/LoaderRunner.js:232:2)\n    at /www/wwwroot/oauth/node_modules/loader-runner/lib/LoaderRunner.js:205:4\n    at /www/wwwroot/oauth/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js:70:14\n    at process._tickCallback (internal/process/next_tick.js:61:11)");
 
 /***/ })
 /******/ ]);

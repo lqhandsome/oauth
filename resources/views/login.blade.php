@@ -14,7 +14,6 @@
     </head>
     <body>
         <div class="app" id="app">
-            <p>{{ asset('js/app.js')}}</p>
             <app></app>
         </div>
     </body>

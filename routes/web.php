@@ -26,3 +26,4 @@ Route::get('weibo/callback','Github\GithubController@getCode');
 Route::get('/github/callback','Github\SocGithubController@getGithub');
 Route::get('/mobile','Github\GithubController@mobile');
 Route::post('/response','Github\GithubController@response');
+Route::get('/codeLogin','Github\GithubController@codeLogin');
