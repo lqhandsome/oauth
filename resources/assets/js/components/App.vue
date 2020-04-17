@@ -16,7 +16,7 @@
     export default {
         name:'app',
         mounted() {
-            console.log('Component mounted.')
+            console.log('app Component mounted')
         },
         data(){
             return{

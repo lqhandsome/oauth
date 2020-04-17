@@ -14,9 +14,10 @@ if (token) {
 import Vue from 'vue'
 import App from './components/App'
 import routes from './routes'
+import VueResource from 'vue-resource'
+Vue.use(VueResource)
 const app = new Vue({
     el: '#app',
     router:routes,
     components: { App },
-
 });

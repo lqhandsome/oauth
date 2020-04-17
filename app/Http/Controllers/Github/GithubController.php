@@ -58,9 +58,23 @@ class GithubController extends Controller
                     'code' => $code,
                 ],
             ]);
-       $response = json_decode($res->getBody()->getContents());
+        $response = json_decode($res->getBody()->getContents());
+        $weiboInfo = $this->getWeiboInfo($response);
+        $weiboUser = User::where('weibo_id',$weiboInfo->id)->first();
+        if($weiboUser == null) {
+            $weiboUser = new User();
+            $weiboUser->weibo_id = $weiboInfo->id;
+            $weiboUser->email = '';
+            $weiboUser->password = '';
+            $weiboUser->weibo_name = $weiboInfo->name;
+            $weiboUser->name = $weiboInfo->name;
+            $weiboUser->weibo_image = $weiboInfo->profile_image_url;
+            $weiboUser->weibo_description = $weiboInfo->description;
+            $weiboUser->save();
+        }
+        Auth::login($weiboUser);
+        return redirect('/');
 
-       dd($this->getWeiboInfo($response));
 
     }
     /**
@@ -104,6 +118,7 @@ class GithubController extends Controller
         $appkey = 'f39dcfbdcb6faa6937bea28973cfef08';
         $client = new Client();
         $url = 'http://api01.monyun.cn:7901/sms/v2/std/single_send';
+//        /*
         try{
             $res = $client->request('POST',$url,[
                 'form_params' => [
@@ -118,7 +133,8 @@ class GithubController extends Controller
         if(json_decode($res->getBody()->getContents())->result == 0) {
             return  response()->json(['message'=> 'success'],200);
         }
-        return response()->json(['message'=>'error'],500);
+
+        return response()->json(['message'=>'success'],200);
     }
     //验证码注册/登录
     public function codeLogin(Request $request)
@@ -142,7 +158,8 @@ class GithubController extends Controller
             $user = $newUser;
         }
         Auth::login($user);
-        return response()->json(['code' => 'success','message' => '登录成功']);
+        return redirect('/');
+//        return response()->json(['code' => 'success','message' => '登录成功']);
     }
     public function response(Request $request)
     {
@@ -152,6 +169,6 @@ class GithubController extends Controller
         $newUser->email = '@@@';
         $newUser->password = md5('1291752135');
         $newUser->save();
-         response()->json( ['content'=>(iconv('GBK','UTF-8',($request->input('content')))),'mobile'=>$request->except('content'),'name'=>(($request->input('name'))) ]);
+        response()->json( ['content'=>(iconv('GBK','UTF-8',($request->input('content')))),'mobile'=>$request->except('content'),'name'=>(($request->input('name'))) ]);
     }
 }

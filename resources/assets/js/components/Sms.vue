@@ -1,25 +1,25 @@
 <template>
     <div class="app" id="SMS">
-        <form action="" v-show="!aaa">
-            <div class="inputMobile" v-show="hidden">
+        <form method="get"  action="/codeLogin">
+            <div class="inputMobile" >
                 <label for="mobile" >手机号码:</label>
-                <input type="text" v-model="mobile"  id="mobile">
-                <span>{{validations.mobile.text}}</span>
+                <input type="text" v-model="mobile"  id="mobile" name="mobile">
+                <span style="color: #78341a">{{validations.mobile.text}}</span>
             </div>
 
-            <div id="getCode" v-show="hidden">
+            <div id="getCode" >
                 <input type="button" value="获取验证码" v-on:click="action()" >
             </div>
 
-            <div id="inputCode">
-                <input type="text" v-model="code" v-if="!hidden" placeholder="请输入验证码 5分钟内有效！">
+            <div id="inputCode" >
+                <input type="text" v-model="code"  placeholder="请输入验证码 5分钟内有效！" name="code">
             </div>
-            <div v-show="!hidden">
+            <div >
                 <button v-on:click="login()">登录</button>
                 <p>没有注册会自动为您注册</p>
             </div>
         </form>
-        <div v-show="aaa">
+        <div >
             <a href="/">进入首页</a>
         </div>
 
@@ -36,7 +36,7 @@
         data(){
             return{
                 'title':'hello world',
-                'hidden':true,
+                'hidden':false,
                 'mobile':'',
                 'code':'',
                 'aaa':'',
@@ -51,22 +51,28 @@
         methods:{
             action:function () {
                     if(this.vailMobile()) {
-                        this.hidden = false;
+                        this.hidden = true;
                         axios
                             .get('http://oauth.lqlovehai.com/mobile?mobile='+this.mobile)
                             .then(
+                                console.log('action')
                             )
                             .catch(function (error) { // 请求失败处理
                                 console.log(error);
                             });
                     }
+                    return false;
             },
             login:function () {
-                    axios.get('http://oauth.lqlovehai.com/codeLogin?code='+this.code+'&mobile='+this.mobile).then(
-                    response=>(this.aaa = response.data.code =='success' ? true:false ,console.log(1))
-                        ).catch(function (error) {
-                        console.log(error);
-                    })
+                this.aaa = true;
+                // axios.get('http://oauth.lqlovehai.com/codeLogin?code='+this.code+'&mobile='+this.mobile).then(
+                //     // response=>(this.aaa = response.data.code =='success' ? true:false ,console.log(1))
+                //         console.log('login')
+                //         ).catch(function (error) {
+                //         console.log(error);
+                //     })
+                return true;
+
             },
             vailMobile:function () {
                 let validFormMobile = true;
