@@ -8,7 +8,7 @@
     <title>首页</title>
 </head>
 <body>
-        <p style="align:auto;display: block">欢迎来到首页</p>
+        <p style="align:auto;display: block">欢迎进入首页</p>
         <a href="/outlogin">退出登录</a>
 </body>
 </html>
