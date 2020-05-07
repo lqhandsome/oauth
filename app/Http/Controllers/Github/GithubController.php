@@ -63,7 +63,7 @@ class GithubController extends Controller
         $weiboUser = User::where('weibo_id',$weiboInfo->id)->first();
         if($weiboUser == null) {
             $weiboUser = new User();
-            $weiboUser->weibo_id = $weiboInfo->id;
+            $weiboUser->weibo_id = intval($weiboInfo->id);
             $weiboUser->email = '';
             $weiboUser->password = '';
             $weiboUser->weibo_name = $weiboInfo->name;
@@ -74,8 +74,6 @@ class GithubController extends Controller
         }
         Auth::login($weiboUser);
         return redirect('/');
-
-
     }
     /**
      * @param $info

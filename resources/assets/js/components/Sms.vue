@@ -8,7 +8,7 @@
             </div>
 
             <div id="getCode" >
-                <input type="button" value="获取验证码" v-on:click="action()" >
+                <input type="button" v-bind:disabled="dis" value="获取验证码" v-on:click="action()" >
             </div>
 
             <div id="inputCode" >
@@ -40,6 +40,7 @@
                 'mobile':'',
                 'code':'',
                 'aaa':'',
+                dis:false,
                 validations:{
                     mobile:{
                         is_valid: true,
@@ -61,6 +62,7 @@
                                 console.log(error);
                             });
                     }
+                    this.dis = true
                     return false;
             },
             login:function () {
@@ -91,3 +93,6 @@
 
     }
 </script>
+<style scoped>
+
+</style>
