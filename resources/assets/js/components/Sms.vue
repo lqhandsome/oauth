@@ -90,7 +90,6 @@
                 return validFormMobile;
             }
         }
-
     }
 </script>
 <style scoped>

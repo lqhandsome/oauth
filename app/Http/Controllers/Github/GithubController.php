@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Github;
 
+use App\Jobs\FirstProcess;
 use Cache;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -73,17 +74,20 @@ class GithubController extends Controller
             $weiboUser->save();
         }
         Auth::login($weiboUser);
+        //写入登录日志
+        $pams = [
+            'ip' => $request->ip(),
+            'login_time' => time(),
+            'name' => $weiboInfo->name,
+            'uid' => $weiboUser->id,
+            'type' => 'weibo',
+        ];
+        FirstProcess::dispatch($pams);
         return redirect('/');
     }
     /**
      * @param $info
      * @return mixed
-     * {#318 ▼
-    +"access_token": "2.00YyA6QB02nrU80e2849b2b2bLmA2C"
-    +"remind_in": "157679999"
-    +"expires_in": 157679999
-    +"uid": "1158516162"
-    +"isRealName": "true"
     }
      */
     //返回微博登录用户信息
@@ -156,6 +160,14 @@ class GithubController extends Controller
             $user = $newUser;
         }
         Auth::login($user);
+        $pams = [
+            'ip' => $request->ip(),
+            'login_time' => time(),
+            'name' => $user->name,
+            'uid' => $user->id,
+            'type' => 'mobileCode'
+        ];
+        FirstProcess::dispatch($pams);
         return redirect('/');
 //        return response()->json(['code' => 'success','message' => '登录成功']);
     }

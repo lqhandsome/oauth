@@ -27,3 +27,6 @@ Route::get('/github/callback','Github\SocGithubController@getGithub');
 Route::get('/mobile','Github\GithubController@mobile');
 Route::post('/response','Github\GithubController@response');
 Route::get('/codeLogin','Github\GithubController@codeLogin');
+//登录日志
+Route::get('/log','Login\LoginLog@index');
+Route::get('/queue','Login\LoginLog@queue');
