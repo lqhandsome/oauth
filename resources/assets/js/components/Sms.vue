@@ -15,7 +15,7 @@
                 <input type="text" v-model="code"  placeholder="请输入验证码 5分钟内有效！" name="code">
             </div>
             <div >
-                <button v-on:click="login()">登录</button>
+                <button v-on:click="login()" v-bind:disabled="!dis">登录</button>
                 <p>没有注册会自动为您注册</p>
             </div>
         </form>

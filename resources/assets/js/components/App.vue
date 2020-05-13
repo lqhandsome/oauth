@@ -5,7 +5,6 @@
             <Weibo></Weibo>
             <router-view></router-view>
             <router-link to="/sms">手机验证码登录</router-link>
-
         </div>
     </div>
 </template>
