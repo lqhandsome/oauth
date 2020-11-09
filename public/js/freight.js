@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 227);
+/******/ 	return __webpack_require__(__webpack_require__.s = 234);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -81309,22 +81309,29 @@ module.exports = function (css) {
 /* 224 */,
 /* 225 */,
 /* 226 */,
-/* 227 */
+/* 227 */,
+/* 228 */,
+/* 229 */,
+/* 230 */,
+/* 231 */,
+/* 232 */,
+/* 233 */,
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(228);
+module.exports = __webpack_require__(235);
 
 
 /***/ }),
-/* 228 */
+/* 235 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_index_App__ = __webpack_require__(229);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_index_App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_index_App__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_freight_app__ = __webpack_require__(236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_freight_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_freight_app__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__indexRoutes__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_resource__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_element_ui__ = __webpack_require__(92);
@@ -81357,29 +81364,29 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_elem
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#app',
     router: __WEBPACK_IMPORTED_MODULE_2__indexRoutes__["a" /* default */],
-    components: { App: __WEBPACK_IMPORTED_MODULE_1__components_index_App___default.a }
+    components: { App: __WEBPACK_IMPORTED_MODULE_1__components_freight_app___default.a }
 });
 
 /***/ }),
-/* 229 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(230)
+  __webpack_require__(237)
 }
 var normalizeComponent = __webpack_require__(10)
 /* script */
-var __vue_script__ = __webpack_require__(232)
+var __vue_script__ = __webpack_require__(239)
 /* template */
-var __vue_template__ = __webpack_require__(233)
+var __vue_template__ = __webpack_require__(240)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-e7b3c586"
+var __vue_scopeId__ = "data-v-b8dfaae4"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -81390,7 +81397,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/index/App.vue"
+Component.options.__file = "resources/assets/js/components/freight/app.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -81399,9 +81406,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e7b3c586", Component.options)
+    hotAPI.createRecord("data-v-b8dfaae4", Component.options)
   } else {
-    hotAPI.reload("data-v-e7b3c586", Component.options)
+    hotAPI.reload("data-v-b8dfaae4", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -81412,23 +81419,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 230 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(231);
+var content = __webpack_require__(238);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(18)("6eb870b2", content, false, {});
+var update = __webpack_require__(18)("415005cc", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e7b3c586\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./App.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e7b3c586\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./App.vue");
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b8dfaae4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./app.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b8dfaae4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./app.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -81438,7 +81445,7 @@ if(false) {
 }
 
 /***/ }),
-/* 231 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(false);
@@ -81446,13 +81453,13 @@ exports = module.exports = __webpack_require__(12)(false);
 
 
 // module
-exports.push([module.i, "\n#hu[data-v-e7b3c586]{\r\n    width: 200px;\r\n    height: 200px;\r\n    border: 1px solid #056;\r\n    text-align: center;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.validation[data-v-b8dfaae4]{\r\n    color: #5e5e5e;\n}\n#route-plan[data-v-b8dfaae4] {\r\n    width: 66%;\r\n    height:800px;\r\n    float:left\n}\n#form[data-v-b8dfaae4]{\r\n        width: 30%;\r\n        float:left;\r\n        margin-left: 10px;\n}\n.amap-copyright[data-v-b8dfaae4]{\r\n        display:none;\r\n        visibility:hidden;\n}\n.large-1[data-v-b8dfaae4] {\r\n        width: 100px;\n}\n.large-2[data-v-b8dfaae4]{\r\n        width: 80px;\n}\na[data-v-b8dfaae4] {\r\n     display: block;\r\n     float: left;\r\n     margin-right: 10px;\n}\n#select[data-v-b8dfaae4]{\r\n      width: 70%;\n}\r\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 232 */
+/* 239 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81482,154 +81489,1129 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-// import loginLog from './LoginLog'
+// import Navigation from "../components/global/Navigation";
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'app',
-    mounted: function mounted() {
-        var _this = this;
-        axios.get('http://oauth.lqlovehai.com//userinfo').then(function (response) {
-            if (response.data.success == true) {
-                _this.name = response.data.userName;
-            }
-        }).catch(function (error) {
-            // 请求失败处理
-            _this.name = '未设置';
-        });
-        this.timer = setInterval(function () {
-            _this.date = new Date(); // 修改数据date
-        }, 1000);
+    components: {
+        // Navigation
     },
     data: function data() {
         return {
-            'title': '欢迎进入首页',
-            'name': '',
-            'date': new Date(),
-            hu: '胡海品请把鼠标移入',
-            dialogVisible: false
-
+            sites: [], //控制途经点个数
+            address: '',
+            city: '',
+            state: '',
+            addressTwo: '',
+            cityTwo: '',
+            stateTwo: '',
+            siteState: [],
+            siteCity: [],
+            siteAddress: [],
+            waypoints: [],
+            distanceCount: '',
+            storeAddress: [],
+            userAddress: {},
+            autoSites: [],
+            isManual: false, //是否是手动添加
+            siteIsManual: false, //途经点是否手动添加
+            store: '',
+            stateStoreAddress: '',
+            stateUserAddress: '',
+            validations: {
+                address: {
+                    is_valid: true,
+                    text: ''
+                },
+                city: {
+                    is_valid: true,
+                    text: ''
+                },
+                state: {
+                    is_valid: true,
+                    text: ''
+                },
+                addressTwo: {
+                    is_valid: true,
+                    text: ''
+                },
+                cityTwo: {
+                    is_valid: true,
+                    text: ''
+                },
+                stateTwo: {
+                    is_valid: true,
+                    text: ''
+                }
+            }
         };
     },
 
-    components: {},
     methods: {
-        hus: function hus(message, event) {
-            this.hu = message;
-            this.dialogVisible = true;
-            console.log(event);
+        submitNewCafe: function submitNewCafe() {
+            if (this.validateNewCafe()) {
+                //逻辑代码
+                var _this = this;
+                axios.get('/responseFreight', {
+                    params: {
+                        address: this.address ? this.address : '', //发货地址
+                        city: this.city ? this.city : '',
+                        state: this.state ? this.state : this.stateStoreAddress, //是否select的数据
+                        addressTwo: this.addressTwo ? this.addressTwo : '', //收货地址
+                        cityTwo: this.cityTwo ? this.cityTwo : '',
+                        stateTwo: this.stateTwo ? this.stateTwo : this.stateUserAddress, //是否select的数据
+                        siteState: this.siteState,
+                        siteCity: this.siteCity,
+                        siteAddress: this.siteAddress
+                    }
+                }).then(function (response) {
+                    if (response.data.success) {
+                        _this.waypoints = response.data.sites;
+                        _this.showMap(response.data.origin, response.data.destination);
+                        _this.distanceCount = '距离是' + response.data.distance / 1000 + '公里';
+                    } else {
+                        alert(response.data.message);
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
+        },
+        validateNewCafe: function validateNewCafe() {
+            var validNewCafeForm = true;
+            //判断是手动输入还是select的方式
+            if (this.isManual == true) {
+                // 确保 address 字段不为空
+                if (this.address.trim() === '') {
+                    validNewCafeForm = false;
+                    this.validations.address.is_valid = false;
+                    this.validations.address.text = '请输入发货地址!';
+                } else {
+                    this.validations.address.is_valid = true;
+                    this.validations.address.text = '';
+                }
+                // 确保 address 字段不为空
+                if (this.addressTwo.trim() === '') {
+                    validNewCafeForm = false;
+                    this.validations.addressTwo.is_valid = false;
+                    this.validations.addressTwo.text = '请输入收货地址!';
+                } else {
+                    this.validations.addressTwo.is_valid = true;
+                    this.validations.addressTwo.text = '';
+                }
+
+                //  确保 city 字段不为空
+                if (this.cityTwo.trim() === '') {
+                    validNewCafeForm = false;
+                    this.validations.cityTwo.is_valid = false;
+                    this.validations.cityTwo.text = '请输入城市!';
+                } else {
+                    this.validations.cityTwo.is_valid = true;
+                    this.validations.cityTwo.text = '';
+                }
+                //  确保 city 字段不为空
+                if (this.city.trim() === '') {
+                    validNewCafeForm = false;
+                    this.validations.city.is_valid = false;
+                    this.validations.city.text = '请输入城市!';
+                } else {
+                    this.validations.city.is_valid = true;
+                    this.validations.city.text = '';
+                }
+
+                //  确保 state 字段不为空
+                if (this.state.trim() === '') {
+                    validNewCafeForm = false;
+                    this.validations.state.is_valid = false;
+                    this.validations.state.text = '请输入发货省份!';
+                } else {
+                    this.validations.state.is_valid = true;
+                    this.validations.state.text = '';
+                }
+
+                //  确保 state 字段不为空
+                if (this.stateTwo.trim() === '') {
+                    validNewCafeForm = false;
+                    this.validations.stateTwo.is_valid = false;
+                    this.validations.stateTwo.text = '请输入收货省份!';
+                } else {
+                    this.validations.stateTwo.is_valid = true;
+                    this.validations.stateTwo.text = '';
+                }
+            }
+
+            return validNewCafeForm;
+        },
+        drawRoute: function drawRoute(route) {
+            var paths = this.parseRouteToPath(route);
+
+            var startMarker = new AMap.Marker({
+                position: paths[0],
+                icon: 'https://webapi.amap.com/theme/v1.3/markers/n/start.png',
+                map: this.map
+            });
+
+            var endMarker = new AMap.Marker({
+                position: paths[paths.length - 1],
+                icon: 'https://webapi.amap.com/theme/v1.3/markers/n/end.png',
+                map: this.map
+            });
+
+            var routeLine = new AMap.Polyline({
+                path: paths,
+                isOutline: true,
+                outlineColor: '#ffeeee',
+                borderWeight: 2,
+                strokeWeight: 5,
+                strokeColor: '#0091ff',
+                lineJoin: 'round'
+            });
+
+            routeLine.setMap(this.map);
+
+            // 调整视野达到最佳显示区域
+            this.map.setFitView([startMarker, endMarker, routeLine]);
+        },
+        parseRouteToPath: function parseRouteToPath(route) {
+            var path = [];
+
+            for (var i = 0, l = route.steps.length; i < l; i++) {
+                var step = route.steps[i];
+
+                for (var j = 0, n = step.path.length; j < n; j++) {
+                    path.push(step.path[j]);
+                }
+            }
+
+            return path;
+        },
+        showMap: function showMap($origin, $destination) {
+            this.map = new AMap.Map("route-plan", {
+                center: [116.397559, 39.89621],
+                zoom: 8
+            });
+
+            this.truckDriving = new AMap.TruckDriving({
+                policy: 10, // 规划策略
+                size: 1, // 车型大小
+                width: 2.5, // 宽度
+                height: 2, // 高度
+                load: 1, // 载重
+                weight: 12, // 自重
+                axlesNum: 2, // 轴数
+                province: '京' // 车辆牌照省份
+            });
+            this.path = [];
+            var markers = [];
+            // 创建 AMap.Icon 实例：
+            var icon = new AMap.Icon({
+                size: new AMap.Size(50, 60), // 图标尺寸
+                image: 'http://a.amap.com/jsapi_demos/static/demo-center/icons/dir-via-marker.png', // Icon的图像
+                imageOffset: new AMap.Pixel(0, 0) // 图像相对展示区域的偏移量，适于雪碧图等
+            });
+            this.path.push({ lnglat: [$origin[0], $origin[1]] }); //起点
+            // this.path.push({lnglat:[116.321354, 39.896436]});//途径
+            for (var i = 0; i < this.waypoints.length; i++) {
+                this.path.push({ lnglat: [this.waypoints[i].lat, this.waypoints[i].lng] });
+                var marker = new AMap.Marker({
+                    position: new AMap.LngLat(this.waypoints[i].lat, this.waypoints[i].lng),
+                    // offset: new AMap.Pixel(-23, -45),
+                    // icon: icon,
+                    icon: 'https://webapi.amap.com/theme/v1.3/markers/n/mark_bs.png',
+                    title: '途经点' + (i + 1)
+                });
+                markers.push(marker);
+            }
+            this.map.add(markers);
+            this.path.push({ lnglat: [$destination[0], $destination[1]] }); //终点
+            var _this = this;
+            this.truckDriving.search(_this.path, function (status, result) {
+                if (status === 'complete') {
+                    log.success('绘制货车路线完成');
+                    if (result.routes && result.routes.length) {
+                        _this.drawRoute(result.routes[0]);
+                    }
+                } else {
+                    log.error('获取货车规划数据失败：' + result);
+                }
+            });
+        },
+        //增加一个途经点
+        addForm: function addForm() {
+            this.sites.push(1);
+        },
+        deleteForm: function deleteForm() {
+            this.siteState.pop();
+            this.siteCity.pop();
+            this.siteAddress.pop();
+            this.sites.pop();
+        },
+        //清空手动输入时的自动填充
+        clearSite: function clearSite(key) {
+            if (this.autoSites[key] == 'manual') {
+                this.siteState[key] = '';
+                this.siteAddress[key] = '';
+                this.siteCity[key] = '';
+            }
         }
     },
-    filters: {
-        //格式化时间
-        formData: function formData(date) {
-            var date = new Date(date);
-            var YY = date.getFullYear() + '-';
-            var MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
-            var DD = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
-            var hh = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
-            var mm = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
-            var ss = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
-            return YY + MM + DD + " " + hh + mm + ss;
+    mounted: function mounted() {
+        var _this = this;
+        axios.get('http://oauth.lqlovehai.com/getAddress').then(function (response) {
+            if (response.data.success) {
+                _this.storeAddress = response.data.data.storeAddress;
+                _this.userAddress = response.data.data.userAddress;
+            }
+        }).catch(function (error) {
+            console.log(error);
+        });
+    },
+
+    watch: {
+        stateStoreAddress: function stateStoreAddress(newStore, oldStore) {
+
+            if (newStore == 'manual') {
+                this.isManual = true;
+            } else {
+                //当选择的有地址时清空发货地址和收货地址
+                this.isManual = false;
+                this.address = '';
+                this.city = '';
+                this.state = '';
+                this.addressTwo = '';
+                this.cityTwo = '';
+                this.stateTwo = '';
+            }
+        },
+        autoSites: function autoSites(newValue, oldValue) {
+            if (newValue == 'manual') {
+                this.siteIsManual = true;
+            }
+            deep: true;
         }
+
+    },
+    filters: {
+        formUserAd: function formUserAd(value) {
+            if (!value) {
+                return '';
+            }
+            var tmpArea = value.area.match(/(\S*):/)[1];
+            return tmpArea + value.addr;
+        }
+    },
+    computed: {
+        // selectSite () {
+        //     return function (value) {
+        //         if(value == 'manual'){
+        //             return true;
+        //         }
+        //         return false;
+        //     }
+        // },
+        selectSite: function selectSite() {
+            return function (value, key) {
+                if (value == 'manual') {
+                    return true;
+                } else {
+                    this.clearSite(key);
+                    this.siteState[key] = this.autoSites[key];
+                    this.siteAddress[key] = this.autoSites[key];
+                    this.siteCity[key] = this.autoSites[key];
+                }
+
+                return false;
+            };
+        }
+
     }
 });
 
 /***/ }),
-/* 233 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "app", attrs: { id: "app" } },
-    [
-      _c(
-        "el-row",
-        { attrs: { gutter: 0 } },
-        [
-          _c("el-col", { attrs: { span: 1 } }, [
+  return _c("div", { staticClass: "page" }, [
+    _c("div", { attrs: { id: "form" } }, [
+      _c("form", { staticClass: "form-inline" }, [
+        _c("h5", [_vm._v("请选择发货地址")]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.stateStoreAddress,
+                expression: "stateStoreAddress"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { id: "select" },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.stateStoreAddress = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              }
+            }
+          },
+          [
+            _c("option", { attrs: { value: "manual" } }, [_vm._v("手动输入")]),
+            _vm._v(" "),
+            _vm._l(_vm.storeAddress, function(storeAd) {
+              return _c("option", { domProps: { value: storeAd.address } }, [
+                _vm._v(" " + _vm._s(storeAd.firstAdress))
+              ])
+            })
+          ],
+          2
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: !_vm.isManual,
+                expression: "!isManual"
+              }
+            ]
+          },
+          [
+            _c("h5", [_vm._v("请选择收货地址")]),
+            _vm._v(" "),
             _c(
-              "div",
-              { staticClass: "grid-content bg-purple" },
-              [
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.stateUserAddress,
+                    expression: "stateUserAddress"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { id: "select" },
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.stateUserAddress = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  }
+                }
+              },
+              _vm._l(_vm.userAddress.list, function(userAd) {
+                return _c(
+                  "option",
+                  { domProps: { value: _vm._f("formUserAd")(userAd) } },
+                  [_vm._v(" " + _vm._s(_vm._f("formUserAd")(userAd)))]
+                )
+              }),
+              0
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.isManual,
+                expression: "isManual"
+              }
+            ],
+            staticClass: "grid-container"
+          },
+          [
+            _c("h5", [_vm._v("发货地址")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "grid-x grid-padding-x" }, [
+              _c(
+                "div",
+                { staticClass: "large-1 medium-12 small-12 cell form-group" },
+                [
+                  _c("label", [
+                    _vm._v("State\n                        "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.state,
+                          expression: "state"
+                        }
+                      ],
+                      attrs: { type: "text", placeholder: "省份" },
+                      domProps: { value: _vm.state },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.state = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: !_vm.validations.state.is_valid,
+                          expression: "!validations.state.is_valid"
+                        }
+                      ],
+                      staticClass: "validation"
+                    },
+                    [_vm._v(_vm._s(_vm.validations.state.text))]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "large-2 medium-12 small-12 cell form-group" },
+                [
+                  _c("label", [
+                    _vm._v("City\n                        "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.city,
+                          expression: "city"
+                        }
+                      ],
+                      attrs: { type: "text", placeholder: "城市" },
+                      domProps: { value: _vm.city },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.city = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: !_vm.validations.city.is_valid,
+                          expression: "!validations.city.is_valid"
+                        }
+                      ],
+                      staticClass: "validation"
+                    },
+                    [_vm._v(_vm._s(_vm.validations.city.text))]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "large-3 medium-12 small-12 cell form-group" },
+                [
+                  _c("label", [
+                    _vm._v("Address\n                        "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.address,
+                          expression: "address"
+                        }
+                      ],
+                      attrs: { type: "text", placeholder: "地址" },
+                      domProps: { value: _vm.address },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.address = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: !_vm.validations.address.is_valid,
+                          expression: "!validations.address.is_valid"
+                        }
+                      ],
+                      staticClass: "validation"
+                    },
+                    [_vm._v(_vm._s(_vm.validations.address.text))]
+                  )
+                ]
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.isManual,
+                expression: "isManual"
+              }
+            ],
+            staticClass: "grid-container"
+          },
+          [
+            _c("h5", [_vm._v("收货地址")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "grid-x grid-padding-x" }, [
+              _c(
+                "div",
+                { staticClass: "large-1 medium-12 small-12 cell form-group" },
+                [
+                  _c("label", [
+                    _vm._v("State\n                        "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.stateTwo,
+                          expression: "stateTwo"
+                        }
+                      ],
+                      attrs: { type: "text", placeholder: "省份" },
+                      domProps: { value: _vm.stateTwo },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.stateTwo = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: !_vm.validations.stateTwo.is_valid,
+                          expression: "!validations.stateTwo.is_valid"
+                        }
+                      ],
+                      staticClass: "validation"
+                    },
+                    [_vm._v(_vm._s(_vm.validations.stateTwo.text))]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "large-2 medium-12 small-12 cell form-group" },
+                [
+                  _c("label", [
+                    _vm._v("City\n                        "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.cityTwo,
+                          expression: "cityTwo"
+                        }
+                      ],
+                      attrs: { type: "text", placeholder: "城市" },
+                      domProps: { value: _vm.cityTwo },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.cityTwo = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: !_vm.validations.cityTwo.is_valid,
+                          expression: "!validations.cityTwo.is_valid"
+                        }
+                      ],
+                      staticClass: "validation"
+                    },
+                    [_vm._v(_vm._s(_vm.validations.cityTwo.text))]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "large-3 medium-12 small-12 cell form-group" },
+                [
+                  _c("label", [
+                    _vm._v("Address\n                        "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.addressTwo,
+                          expression: "addressTwo"
+                        }
+                      ],
+                      attrs: { type: "text", placeholder: "地址" },
+                      domProps: { value: _vm.addressTwo },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.addressTwo = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: !_vm.validations.addressTwo.is_valid,
+                          expression: "!validations.addressTwo.is_valid"
+                        }
+                      ],
+                      staticClass: "validation"
+                    },
+                    [_vm._v(_vm._s(_vm.validations.addressTwo.text))]
+                  )
+                ]
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { attrs: { id: "other" } },
+          _vm._l(_vm.sites, function(item, i) {
+            return _c("div", { staticClass: "grid-container" }, [
+              _c("p", [_vm._v("途经点" + _vm._s(i + 1))]),
+              _vm._v(" "),
+              _c("div", [
                 _c(
-                  "router-link",
-                  { attrs: { to: "/" } },
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.autoSites[i],
+                        expression: "autoSites[i]"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { id: "select" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.autoSites,
+                          i,
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
                   [
-                    _c("el-link", { attrs: { type: "primary" } }, [
-                      _vm._v("回首页")
-                    ])
+                    _c("option", { attrs: { value: "manual" } }, [
+                      _vm._v("手动输入")
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.storeAddress, function(storeAd) {
+                      return _c(
+                        "option",
+                        { domProps: { value: storeAd.address } },
+                        [_vm._v(" " + _vm._s(storeAd.firstAdress))]
+                      )
+                    })
                   ],
-                  1
+                  2
                 )
-              ],
-              1
-            )
-          ]),
-          _vm._v(" "),
-          _c("el-col", { attrs: { span: 2 } }, [
-            _c("div", { staticClass: "grid-content bg-purple" }, [
-              _vm._v(_vm._s(_vm.name))
-            ])
-          ]),
-          _vm._v(" "),
-          _c("el-col", { attrs: { span: 2 } }, [
-            _c("div", { staticClass: "grid-content bg-purple-light" }, [
-              _vm._v(_vm._s(_vm.title))
-            ])
-          ]),
-          _vm._v(" "),
-          _c("el-col", { attrs: { span: 3 } }, [
-            _c("div", { staticClass: "grid-content bg-purple" }, [
-              _vm._v(_vm._s(_vm._f("formData")(_vm.date)))
-            ])
-          ]),
-          _vm._v(" "),
-          _c("el-col", { attrs: { span: 2 } }, [
-            _c(
-              "div",
-              { staticClass: "grid-content bg-purple" },
-              [
-                _c(
-                  "router-link",
-                  { attrs: { type: "primary", to: "/loginlog" } },
-                  [
-                    _c("el-link", { attrs: { type: "success" } }, [
-                      _vm._v("登录日志")
-                    ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.selectSite(_vm.autoSites[i], i),
+                      expression: "selectSite(autoSites[i],i)"
+                    }
                   ],
-                  1
-                )
-              ],
-              1
-            )
-          ]),
-          _vm._v(" "),
-          _c("el-col", { attrs: { span: 1 } }, [
-            _c(
-              "div",
-              { staticClass: "grid-content bg-purple-light" },
-              [
-                _c(
-                  "el-link",
-                  { attrs: { type: "warning", href: "/outlogin" } },
-                  [_vm._v("退出登录")]
-                )
-              ],
-              1
-            )
-          ])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("router-view")
-    ],
-    1
-  )
+                  staticClass: "grid-x grid-padding-x"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "large-1 medium-12 small-12 cell form-group"
+                    },
+                    [
+                      _c("label", [
+                        _vm._v("State\n                            "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.siteState[i],
+                              expression: "siteState[i]"
+                            }
+                          ],
+                          attrs: { type: "text", placeholder: "省份" },
+                          domProps: { value: _vm.siteState[i] },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.siteState, i, $event.target.value)
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: !_vm.validations.stateTwo.is_valid,
+                              expression: "!validations.stateTwo.is_valid"
+                            }
+                          ],
+                          staticClass: "validation"
+                        },
+                        [_vm._v(_vm._s())]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "large-2 medium-12 small-12 cell form-group"
+                    },
+                    [
+                      _c("label", [
+                        _vm._v("City\n                            "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.siteCity[i],
+                              expression: "siteCity[i]"
+                            }
+                          ],
+                          attrs: { type: "text", placeholder: "城市" },
+                          domProps: { value: _vm.siteCity[i] },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.siteCity, i, $event.target.value)
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: !_vm.validations.cityTwo.is_valid,
+                              expression: "!validations.cityTwo.is_valid"
+                            }
+                          ],
+                          staticClass: "validation"
+                        },
+                        [_vm._v(_vm._s())]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "large-3 medium-12 small-12 cell form-group"
+                    },
+                    [
+                      _c("label", [
+                        _vm._v("Address\n                            "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.siteAddress[i],
+                              expression: "siteAddress[i]"
+                            }
+                          ],
+                          attrs: { type: "text", placeholder: "地址" },
+                          domProps: { value: _vm.siteAddress[i] },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.siteAddress, i, $event.target.value)
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: !_vm.validations.addressTwo.is_valid,
+                              expression: "!validations.addressTwo.is_valid"
+                            }
+                          ],
+                          staticClass: "validation"
+                        },
+                        [_vm._v(_vm._s())]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ])
+          }),
+          0
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "large-12 medium-12 small-12 cell" }, [
+          _c(
+            "a",
+            {
+              staticClass: "btn  btn-success",
+              attrs: { href: "javascript:void 0;" },
+              on: {
+                click: function($event) {
+                  return _vm.submitNewCafe()
+                }
+              }
+            },
+            [_vm._v("提交")]
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-info",
+            attrs: { href: "javascript:void 0;" },
+            on: { click: _vm.addForm }
+          },
+          [_vm._v("增加一个途经点")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-danger",
+            attrs: { href: "javascript:void 0;" },
+            on: { click: _vm.deleteForm }
+          },
+          [_vm._v("删除一个途经点")]
+        ),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("h3", { staticStyle: { color: "#056" } }, [
+          _vm._v(_vm._s(_vm.distanceCount))
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { attrs: { id: "route-plan" } }),
+    _vm._v(" "),
+    _c("div", { attrs: { id: "test" } })
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -81637,7 +82619,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-e7b3c586", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-b8dfaae4", module.exports)
   }
 }
 

@@ -44,5 +44,8 @@ return [
         'client_secret' => env('WEIBO_CLIENT_SECRET'),
         'redirect' => env('WEIBO_REDIRECT')
     ],
+    'gaode' => [
+        'ws_api_key' => 'a9f59b321d1d2cba707007756cacd99e'
+    ]
 
 ];

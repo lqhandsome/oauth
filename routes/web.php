@@ -20,7 +20,7 @@ Route::get('/outlogin',function (){
 });
 Route::get('weibo/callback','Github\GithubController@getCode');
 Route::get('/github/callback','Github\SocGithubController@getGithub');
-Route::get('/mobile','Github\GithubController@mobile');
+Route::get('/mobile','Github\GithubController@mobile')->middleware('throttle:5');
 Route::post('/response','Github\GithubController@response');
 Route::get('/codeLogin','Github\GithubController@codeLogin');
 Route::get('/loginlog','Login\LoginLog@loginlog');
@@ -35,3 +35,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/userinfo','Login\LoginLog@UserInfo');
 
 });
+Route::get('/freight', function () {
+    return view('freight');
+});
+Route::get('/responseFreight','Freight\IndexController@responseFreight');
+Route::get('/getAddress','Freight\IndexController@getAddress');
+Route::get('/getIp','Freight\IndexController@getIp');

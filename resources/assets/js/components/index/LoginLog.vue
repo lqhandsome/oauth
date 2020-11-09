@@ -40,8 +40,6 @@
         >
         </el-pagination>
     </div>
-    <button v-on:click="add">{{count}}</button>
-    <test v-bind:id="logs.data" count="11"></test>
 </div>
 
 </template>
@@ -113,7 +111,7 @@
             },
             currentPage(val) {
                 var _this = this;
-                _this.currentPage1 = val
+                _this.currentPage1 =
                 axios.get('http://oauth.lqlovehai.com/loginlog?',{
                     params: {
                         perPage:this.pageSize,
