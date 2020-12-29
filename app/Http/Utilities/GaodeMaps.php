@@ -16,7 +16,7 @@ class GaodeMaps
         //是否批量获取
         $addressA ='';
         if(is_array($address)) {
-            for ($i =0;$i < count($address)  ;$i++) {
+            for ($i = 0;$i < count($address)  ;$i++) {
                 $addressA .= $state[$i] . $city[$i] . $address[$i] . '|';
             }
         } else {

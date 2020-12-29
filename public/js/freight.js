@@ -66977,7 +66977,7 @@ exports = module.exports = __webpack_require__(12)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -66990,8 +66990,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__test__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__test___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__test__);
-//
-//
 //
 //
 //
@@ -67084,7 +67082,7 @@ var dateFormat = __webpack_require__(121);
             return YY + MM + DD + " " + hh + mm + ss;
         },
         add: function add() {
-            this.count = this.count + 1;
+            this.count = this.count + 2;
         },
         changePageSize: function changePageSize(val) {
             console.log(val);
@@ -67102,8 +67100,7 @@ var dateFormat = __webpack_require__(121);
         },
         currentPage: function currentPage(val) {
             var _this = this;
-            _this.currentPage1 = val;
-            axios.get('http://oauth.lqlovehai.com/loginlog?', {
+            _this.currentPage1 = axios.get('http://oauth.lqlovehai.com/loginlog?', {
                 params: {
                     perPage: this.pageSize,
                     page: this.currentPage1
@@ -67240,80 +67237,69 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "loginLog" } },
-    [
-      _c(
-        "div",
-        { attrs: { id: "log" } },
-        [
-          _c(
-            "el-table",
-            {
-              staticStyle: { width: "40%" },
-              attrs: {
-                "element-loading-text": "拼命加载中",
-                "element-loading-spinner": "el-icon-loading",
-                "element-loading-background": "rgba(0, 0, 0, 0.8)",
-                data: _vm.logs.data,
-                border: ""
-              }
-            },
-            [
-              _c("el-table-column", {
-                attrs: {
-                  prop: "login_time",
-                  label: "登录日期",
-                  width: "180",
-                  formatter: _vm.formatter
-                }
-              }),
-              _vm._v(" "),
-              _c("el-table-column", {
-                attrs: { prop: "name", label: "登录名", width: "180" }
-              }),
-              _vm._v(" "),
-              _c("el-table-column", {
-                attrs: { prop: "type", label: "登录方式" }
-              }),
-              _vm._v(" "),
-              _c("el-table-column", {
-                attrs: { prop: "ip", label: "登录地址" }
-              })
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "block" },
-        [
-          _c("el-pagination", {
+  return _c("div", { attrs: { id: "loginLog" } }, [
+    _c(
+      "div",
+      { attrs: { id: "log" } },
+      [
+        _c(
+          "el-table",
+          {
+            staticStyle: { width: "40%" },
             attrs: {
-              layout: "total, sizes, prev, pager, next, jumper",
-              total: _vm.logs.total,
-              "page-sizes": [5, 10, 20, 50, 100],
-              "page-size": _vm.pageSize
-            },
-            on: {
-              "size-change": _vm.changePageSize,
-              "current-change": _vm.currentPage
+              "element-loading-text": "拼命加载中",
+              "element-loading-spinner": "el-icon-loading",
+              "element-loading-background": "rgba(0, 0, 0, 0.8)",
+              data: _vm.logs.data,
+              border: ""
             }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("button", { on: { click: _vm.add } }, [_vm._v(_vm._s(_vm.count))]),
-      _vm._v(" "),
-      _c("test", { attrs: { id: _vm.logs.data, count: "11" } })
-    ],
-    1
-  )
+          },
+          [
+            _c("el-table-column", {
+              attrs: {
+                prop: "login_time",
+                label: "登录日期",
+                width: "180",
+                formatter: _vm.formatter
+              }
+            }),
+            _vm._v(" "),
+            _c("el-table-column", {
+              attrs: { prop: "name", label: "登录名", width: "180" }
+            }),
+            _vm._v(" "),
+            _c("el-table-column", {
+              attrs: { prop: "type", label: "登录方式" }
+            }),
+            _vm._v(" "),
+            _c("el-table-column", { attrs: { prop: "ip", label: "登录地址" } })
+          ],
+          1
+        )
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "block" },
+      [
+        _c("el-pagination", {
+          attrs: {
+            layout: "total, sizes, prev, pager, next, jumper",
+            total: _vm.logs.total,
+            "page-sizes": [5, 10, 20, 50, 100],
+            "page-size": _vm.pageSize
+          },
+          on: {
+            "size-change": _vm.changePageSize,
+            "current-change": _vm.currentPage
+          }
+        })
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -81453,7 +81439,7 @@ exports = module.exports = __webpack_require__(12)(false);
 
 
 // module
-exports.push([module.i, "\n.validation[data-v-b8dfaae4]{\r\n    color: #5e5e5e;\n}\n#route-plan[data-v-b8dfaae4] {\r\n    width: 66%;\r\n    height:800px;\r\n    float:left\n}\n#form[data-v-b8dfaae4]{\r\n        width: 30%;\r\n        float:left;\r\n        margin-left: 10px;\n}\n.amap-copyright[data-v-b8dfaae4]{\r\n        display:none;\r\n        visibility:hidden;\n}\n.large-1[data-v-b8dfaae4] {\r\n        width: 100px;\n}\n.large-2[data-v-b8dfaae4]{\r\n        width: 80px;\n}\na[data-v-b8dfaae4] {\r\n     display: block;\r\n     float: left;\r\n     margin-right: 10px;\n}\n#select[data-v-b8dfaae4]{\r\n      width: 70%;\n}\r\n", ""]);
+exports.push([module.i, "\n.validation[data-v-b8dfaae4]{\n    color: #5e5e5e;\n}\n#route-plan[data-v-b8dfaae4] {\n    width: 66%;\n    height:800px;\n    float:left\n}\n#form[data-v-b8dfaae4]{\n        width: 30%;\n        float:left;\n        margin-left: 10px;\n}\n.amap-copyright[data-v-b8dfaae4]{\n        display:none;\n        visibility:hidden;\n}\n.large-1[data-v-b8dfaae4] {\n        width: 100px;\n}\n.large-2[data-v-b8dfaae4]{\n        width: 80px;\n}\na[data-v-b8dfaae4] {\n     display: block;\n     float: left;\n     margin-right: 10px;\n}\n#select[data-v-b8dfaae4]{\n      width: 70%;\n}\n", ""]);
 
 // exports
 

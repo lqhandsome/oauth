@@ -8,17 +8,6 @@
             <el-col :span="2" ><div class="grid-content bg-purple"> <router-link type="primary"  to="/loginlog"><el-link type="success">登录日志</el-link></router-link></div></el-col>
             <el-col :span="1" ><div class="grid-content bg-purple-light"><el-link type="warning" href="/outlogin">退出登录</el-link></div></el-col>
         </el-row>
-<!--        <el-dialog-->
-<!--                title="提示"-->
-<!--                :visible.sync="dialogVisible"-->
-<!--                width="30%"-->
-<!--                >-->
-<!--            <span>记得给我买猪肚！</span>-->
-<!--            <span slot="footer" class="dialog-footer">-->
-<!--                <el-button @click="dialogVisible = false">知道了大哥！</el-button>-->
-<!--                <el-button type="primary" @click="dialogVisible = false">我确定我知道了！</el-button>-->
-<!--            </span>-->
-<!--        </el-dialog>-->
         <router-view></router-view>
     </div>
 </template>

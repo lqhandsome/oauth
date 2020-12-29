@@ -13,8 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/api_tmp',function (){return 1;});
 Route::get('/aa',function (){return 'lq';});
+Route::post('/upload','Freight\IndexController@upload');

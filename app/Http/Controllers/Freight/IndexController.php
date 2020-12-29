@@ -1,201 +1,1 @@
-<?php
-
-namespace App\Http\Controllers\Freight;
-
-use App\Http\Controllers\Controller;
-use App\Http\Model\loginLogs;
-use Illuminate\Http\Request;
-use App\Http\Utilities\GaodeMaps;
-use App\Http\Model\storeAddress;
-use GuzzleHttp\Client;
-
-class IndexController extends Controller
-{
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     * 计算两点之间的距离可以添加途经点
-     */
-    public function responseFreight (Request $request)
-    {
-        $address = $request->input('address');
-        $city = $request->input('city');
-        $state = $request->input('state');
-        $addressTwo = $request->input('addressTwo');
-        $cityTwo = $request->input('cityTwo');
-        $stateTwo = $request->input('stateTwo');
-        $siteState = $request->input('siteState');
-        $siteCity = $request->input('siteCity');
-        $siteAddress = $request->input('siteAddress');
-        //途经点坐标
-        $sites ='';
-        if(isset($siteAddress[0]) ) {
-            $sites = GaodeMaps::geocodeAddress($siteAddress,$siteCity,$siteState);
-        }
-        //起点坐标
-        $origin = GaodeMaps::geocodeAddress($address, $city, $state);
-        //终点坐标
-        $destination = GaodeMaps::geocodeAddress($addressTwo, $cityTwo, $stateTwo);
-        $originString = $origin[0]['lat'] .','.$origin[0]['lng'];
-        $destinationString = $destination[0]['lat'] .','.$destination[0]['lng'];
-        //获取距离
-        $res = GaodeMaps::distance($originString,$destinationString,$sites);
-        if($res->errcode){
-            //错误
-            return response()->json(['message' => '地点有误请重新输入','success' => false]);
-        }
-        //起点
-        $origin = $res->data->route->origin;
-        $destination = $res->data->route->destination;
-        //距离厘米
-        $distance = $res->data->route->paths['0']->distance;
-        //时间秒
-        $duration = $res->data->route->paths[0]->duration;
-        return response()->json([
-            'distance' => $distance,
-            'duration' => $duration,
-            'origin' => explode(',',$origin),
-            'destination' => explode(',',$destination),
-            'sites' =>$sites,
-            'success' => true
-        ]);
-    }
-    /**
-     * 返回供应商和用户的收货地址
-     */
-    public  function  getAddress ()
-    {
-        $storeAddresses  = storeAddress::all()->toArray();
-        $client = new Client();
-       $res =  $client->request('GET', 'https://mall.yuncut.com/distance/getadress.html',
-            [
-            'query' => [
-                'sign' => md5('yuncut')
-                ]
-            ]);
-        $res =  (string)$res->getBody();
-
-        $userAddress = \GuzzleHttp\json_decode($res);
-        foreach ($userAddress->list as $key => $value) {
-
-        }
-        return response()->json(['success' => true,'data' => ['storeAddress' => $storeAddresses , 'userAddress' => $userAddress ] ]);
-    }
-
-    public function getIp(Request $request)
-    {
-//        $ip = $request->ip();
-//        $login = new loginLogs();
-//        $login->ip = $ip;
-//        $login->name = $request->header('user-agent');
-//        $login->login_time = time();
-//        $login->uid =  '2';
-//        $login->type =  '1';
-//        $check = $login->save();
-//        return "已经获取到你的IP并保存,你的IP是：".$ip;
-//        $arr = [1,2,2,5,6,6,7,7,8,9];
-        $arr = [0,7,5,19,8,4,1,20,13,16];
-        $n = 9;
-        dd($this->heapSort($arr,$n));
-    }
-    //建堆
-    private function createHeap($arr,$n)
-    {
-        $num = 0;
-        for ($i = $n>>1;$i >= 1;$i--){
-                $this->heapify($arr,$n,$i);
-        }
-        return $arr;
-
-    }
-    //堆排序 O(nlogn)
-    private  function heapSort($arr,$n)
-    {
-        $arr = $this->createHeap($arr,$n);
-        $i  = $n;
-        while ($i >1){
-            $tmp = $arr[1];
-            $arr[1] = $arr[$i];
-            $arr[$i] = $tmp;
-            $i--;
-//            dd($arr);
-            $this->heapify($arr,$i,1);
-        }
-        return $arr;
-    }
-
-    /**
-     * @param $arr 数组
-     * @param $n 可以多少个节点
-     * @param $i 当前的节点位置,从此节点从上往下堆化
-     */
-    private function heapify(&$arr,$n,$i)
-    {
-        while(true){
-
-            $maxPos = $i;
-            if($i <<1 <=$n && $arr[$i] < $arr[$i * 2] ){
-                $maxPos = $i *2;
-            }
-            if(($i <<1) +1 <= $n && $arr[$maxPos] < $arr[$i * 2 +1]){
-                $maxPos = $i * 2 +1;
-            }
-            if($maxPos == $i){
-                break;
-            }
-            $tmp = $arr[$i];
-            $arr[$i] = $arr[$maxPos];
-            $arr[$maxPos] = $tmp;
-            $i = $maxPos;
-        }
-
-    }
-    private function  midSort($arr,$int)
-    {
-        $count = count($arr);
-        $low = 0 ;
-        $high = $count -1;
-        while($low <= $high){
-            $mid = $low + (($high - $low) >>1);//取mid
-            if($arr[$mid] > $int){
-                $high = $mid -1;
-
-            }else if($arr[$mid] < $int){
-                $low = $mid +1;
-            } else{
-//                if($mid == 0 || $arr[$mid -1] != $int) return $mid;  查找第一个等于给定值
-//                else $high = $mid -1;
-                /**
-                 * 查找最后一个等于给定值得元素
-                 */
-                if($mid == ($count -1) || $arr[$mid +1] != $int) return $mid;
-                    else $low = $mid +1;
-            }
-        }
-
-        return -1 ;
-
-    }
-    private function  findFirst($arr,$int)
-    {
-        $count = count($arr);
-        $low = 0 ;
-        $high = $count -1;
-        while($low <= $high){
-            $mid = $low + (($high - $low) >>1);//取mid
-            if($arr[$mid] > $int){
-//                if($mid ==0 || $arr[$mid -1] < $int) return $mid;
-//                else $high = $mid -1;
-                $high = $mid-1;
-
-            }else {
-                if($mid == $count - 1 || $arr[$mid + 1] > $int) return $mid;
-                else $low = $mid + 1;
-
-            }
-        }
-
-        return -1 ;
-
-    }
-}
+<?phpnamespace App\Http\Controllers\Freight;use App\Http\Controllers\Controller;use App\Http\Model\loginLogs;use App\Imports\TestImportA;use Illuminate\Http\Request;use App\Http\Utilities\GaodeMaps;use App\Http\Model\storeAddress;use GuzzleHttp\Client;use Excel;use Illuminate\Support\Facades\Storage;use Mockery\Exception;use phpDocumentor\Reflection\Types\Boolean;use App\Exports\InvoicesExport;use App\Exports\TestExport;use App\Exports\TestImportAA;use Validator;use App\Http\Model\gwy;use DB;class IndexController extends Controller{    protected $dist = 100;    const PI = 123;    public function upload(Request $request)    {        $files = $request->file('file');        $allFiles = $request->allFiles();        $num =1;        foreach($files as $file){            /*            echo $file->getClientOriginalName() . '/<br>';            echo $file->guessExtension() . '/<br>';            echo $file->getFilename() . '/<br>';            echo $file->getClientOriginalExtension() . '/<br>';            echo $file->getClientMimeType() . '/<br>';            echo $file->guessClientExtension() . '/<br>';            echo $file->getClientSize() . '/<br>';            echo $file->getError() . '/<br>';            echo $file->isValid() . '/<br>';            echo $file->getMaxFilesize() . '/<br>';            echo $file->getErrorMessage() . '/<br>';            die();*/            $num++;//            dd(storage_path('app/public'));            $path[] = $file->storeAs('public/dwg', $num . '.'.$file->getClientOriginalName());        }        if( $path ) {            return ['code' => 0 , 'msg' => '上传成功' , 'data' => $path];        }    }    public function auth()    {        dd(1);            $nums = [2,2,3];            $arr = [];            for($i =0;$i < count($nums);$i++){                $arr[$nums[$i]]  = isset($arr[$nums[$i]]) ? $arr[$nums[$i]] +1 : 1;            }            $max = null;            foreach($arr as $key=>$value){                $max = $value >= $arr[$max] ? $value:$max;            }            return $max;        try {            $res = gwy::where('id',1048)->where('专业要求','like','%网络工程%')->select('id')->dump();        }catch (\BadMethodCallException $e){            return $e->getMessage();        }        dd($res);        $array = Excel::toArray(new TestImportAA(),storage_path('app/xlsx/公务员.xlsx'));        $data = $array[1];        array_shift($data);//        return response()->json($data);        $res = [];        foreach ($data as $key => $value){            $res[$key]['招录单位名称'] = $value[0];            $res[$key]['id'] = $key+1;            $res[$key]['职位代码'] = $value[1];            $res[$key]['职位名称'] = $value[2];            $res[$key]['职位类别'] = $value[3];            $res[$key]['职位大类'] = $value[4];            $res[$key]['职位小类'] = $value[5];            $res[$key]['招录人数'] = $value[6];            $res[$key]['咨询电话'] = $value[7];            $res[$key]['职位简介'] = $value[8];            $res[$key]['学历要求'] = $value[9];            $res[$key]['学位要求'] = $value[10];            $res[$key]['性别要求'] = $value[11];            $res[$key]['现有身份要求'] = $value[12];            $res[$key]['政治面貌要求'] = $value[13];            $res[$key]['民族要求'] = $value[14];            $res[$key]['年龄要求'] = $value[15];            $res[$key]['专业要求'] = $value[16];            $res[$key]['是否加试心理测评'] = $value[17];            $res[$key]['是否体能测试'] = $value[18];            $res[$key]['是否加试专业'] = $value[19];            $res[$key]['备注'] = $value[20].'备注';            break;        }//        return response()->json($res);        DB::beginTransaction();        try {            $result = gwy::insert($res);        } catch (\Illuminate\Database\QueryException $ex){            DB::rollBack();            return response()->json(['error' => $ex->getMessage()]);        }        DB::commit();        return response()->json($result);    }    public function exportTest()    {        $client = new Client();        $res = $client->request('GET', 'https://mall.yuncut.com/datavshoworder/suzhouAoke.html'        );        $res = (string)$res->getBody();        $res = json_decode($res,true);        $arr = [];        foreach ($res as $key => $value){            $arr[$key][] =  $value['package_id'];            $arr[$key][] =  $value['user_id'];            $arr[$key][] =  $value['title'];            $arr[$key][] =  $value['v_no'];            $arr[$key][] =  $value['custom_bn'];            $arr[$key][] =  $value['status'];            $arr[$key][] =  date('Ymd-H:i:s',$value['created_time']);        }        array_unshift($arr,['package_id','user_id','组合名称','版本号','组合编码','状态1启用,0禁用','创建时间']);        $export = new InvoicesExport($arr);        return Excel::download($export, '苏州奥克所有组合件'.'.xlsx');    }    public function  export()    {        $client = new Client();        $res = $client->request('GET', 'https://mall.yuncut.com/datavshoworder/export.html'           );        $res = (string)$res->getBody();        $res = json_decode($res,true);        $heads =  ['g_id','dwg','图纸号','版本号','图纸名','公司名称','切割方式','板厚(mm)','材质','零件状态1启用,0禁用'];         array_unshift($res,$heads);//        [//            [1, 2, 3],//            [4, 5, 6]//        ]        $export = new InvoicesExport($res);        return Excel::download($export, '零件信息零件状态'.'.xlsx');        return $res;    }    /**     * @param Request $request     * @return \Illuminate\Http\JsonResponse     * 计算两点之间的距离可以添加途经点     */    public function responseFreight(Request $request)    {        $address = $request->input('address');        $city = $request->input('city');        $state = $request->input('state');        $addressTwo = $request->input('addressTwo');        $cityTwo = $request->input('cityTwo');        $stateTwo = $request->input('stateTwo');        $siteState = $request->input('siteState');        $siteCity = $request->input('siteCity');        $siteAddress = $request->input('siteAddress');        //途经点坐标        $sites = '';        if (isset($siteAddress[0])) {            $sites = GaodeMaps::geocodeAddress($siteAddress, $siteCity, $siteState);        }        //起点坐标        $origin = GaodeMaps::geocodeAddress($address, $city, $state);        //终点坐标        $destination = GaodeMaps::geocodeAddress($addressTwo, $cityTwo, $stateTwo);        $originString = $origin[0]['lat'] . ',' . $origin[0]['lng'];        $destinationString = $destination[0]['lat'] . ',' . $destination[0]['lng'];        //获取距离        $res = GaodeMaps::distance($originString, $destinationString, $sites);        if ($res->errcode) {            //错误            return response()->json(['message' => '地点有误请重新输入', 'success' => false]);        }        //起点        $origin = $res->data->route->origin;        $destination = $res->data->route->destination;        //距离厘米        $distance = $res->data->route->paths['0']->distance;        //时间秒        $duration = $res->data->route->paths[0]->duration;        return response()->json([            'distance' => $distance,            'duration' => $duration,            'origin' => explode(',', $origin),            'destination' => explode(',', $destination),            'sites' => $sites,            'success' => true        ]);    }    /**     * 返回供应商和用户的收货地址     */    public function getAddress()    {        $storeAddresses = storeAddress::all()->toArray();        $client = new Client();        $res = $client->request('GET', 'https://mall.yuncut.com/distance/getadress.html',            [                'query' => [                    'sign' => md5('yuncut')                ],            ]);        $res = (string)$res->getBody();        $userAddress = \GuzzleHttp\json_decode($res);        foreach ($userAddress->list as $key => $value) {        }        return response()->json(['success' => true, 'data' => ['storeAddress' => $storeAddresses, 'userAddress' => $userAddress]]);    }    public function getCompanyInfo()    {        try {            $client = new Client();            $res =  $client->request('GET', 'http://ecitaxinfo.market.alicloudapi.com/ECICreditCode/GetCreditCodeNew',                [                    'query' => [                        'keyWord' => '嘉兴云切供应链管理有限公司',                    ],                    'headers' => [                        'Authorization' => 'APPCODE ' . 'c91ee21352bb4c22bfde7ff5943896d3'                    ]                ]);        } catch (Exception $e) {            return $this->splash('success', null,$e->getMessage());        }        dd(\GuzzleHttp\json_decode($res->getBody()->getContents(),true));        dd((string)$res->getBody());    }    public function getIp(Request $request)    {        echo substr_replace("Hello world","Shanghai",6,1);        $str = 'A b cd ';       echo strtolower(str_replace(' ','',$str));        dd(chr(65));        $nums = [2,2,1,3,1,1];        dd($this->majorityElement($nums));        $single = 0;        for($i=0;$i < count($nums);$i++){            $single = $single ^ $nums[$i];            echo $nums[$i].'</hr>';        }        return $single;        dd($this->countPrimes(9));//        $ip = $request->ip();//        $login = new loginLogs();//        $login->ip = $ip;//        $login->name = $request->header('user-agent');//        $login->login_time = time();//        $login->uid =  '2';//        $login->type =  '1';//        $check = $login->save();//        return "已经获取到你的IP并保存,你的IP是：".$ip;//        $arr = [1,2,2,5,6,6,7,7,8,9];//        $arr = [0,7,5,19,8,4,1,20,13,16];        $n = 9;        for ($i = 0;$i < 8;$i++ ){            for ($j = 0;$j< 8 ;$j++){                $arr[$i][$j] = -1;            }        }//        dd(ord('['));        $BSF = [            0 => [1,3],            1 => [0,2,4],            2 => [1,5],            3 => [0,4],            4 => [1,3,5,6],            5 => [2,4,7],            6 => [4,7],            7 => [5,6]        ];        $DFS = [            1 => [2,4],            2 => [1,3,5],            3 => [2,6],            4 => [1,5],            5 => [2,4,6,7],            6 => [3,5,8],            7 => [5,8],            8 => [6,7],        ];        $prve = $this->BFS($BSF,0,7);        $this->printPrev($prve,0,7);        dd($prve);        $prve = $this->DFS($DFS,1,7);        //        dd ( $this->kmp()); kmp算法        //        dd($this->cal8queens(0,$arr)); 8女王        //        dd($this->heapSort($arr,$n));//        dd($this->knapsack([2,2,4,6,19],5,18)); 动态规划背包问题//        dd(($this->minDistBT())); 最短路径问题//        $this->ideaDance(0,0,0); //编辑路径        $brr = [2];//        dd( $this->activeLneg([2,9,4,11]));最长升序子列长度        dd($this->Kahn());        dd($this->num);        dd($this->minDist);    }    //多数    function majorityElement($nums) {        $arr = [];        $max = 0;        $key = 0;        for($i =0;$i < count($nums);$i++){            if(!isset($arr[$nums[$i]]) ){                $arr[$nums[$i]] = 0;            }            $arr[$nums[$i]]++;            if($arr[$nums[$i]] > $max){                $max  = $arr[$nums[$i]];                $key = $nums[$i];            }        }        return $key;    }    //统计小于数的所有质数 0 =0 ,2=0,1=0    protected  function countPrimes($n) {        $num =0 ;        for($i = 2;$i < $n;$i++){            $num++;            for($j =2;$j * $j <= $i;$j++){                if($i%$j == 0){                    $num--;                    break;                }            }        }        return $num;    }    protected  function countPrimesE($n) {        $arr = array(0);        $num =0 ;        for($i = 2;$i < $n;$i++){                if($arr[$i]){                    $num++;                    //只要他是质数就排除倍数上身的比如  遍历到5 就排除 10  15 20 25 ... 5*n                    for ($j=$i+$i;$j<$n;$j+=$i){                        $arr[$j] = false;                    }                }        }        return $num;    }    //打印BFS路径    protected function printPrev($arr,$s,$t)    {        if($arr[$t] != -1 && $t != $s){            $this->printPrev($arr,$s,$arr[$t]);        }        echo $t .'-';    }    /**     * 确定代码源文件的编译依赖关系     */    protected function Kahn()    {        $arr = [            '1' => ['2','3'],            '2' => ['4'],            '3' => ['4','6'],            '4' => ['8','5'],            '7' => ['3'],            '8' => ['9'],            '6' => [],            '5' => ['6'],            '9' => ['5'],        ];        $v = [1=>0,0,0,0,0,0,0,0,0];        $brr = [];        //判断每个定点的入度是多少        for ($i = 1 ;$i <= count($arr);$i++){            for ($j = 0;$j <count($arr[$i]);$j++){                $tmp = $arr[$i][$j];                $v[$tmp]++;            }        }        //将入度为0的剔除并将度为0的压入$brr数组       for ($i = 1 ;$i < count($v);$i++){            if ($v[$i] == 0) {                $brr[] =  $i ;                unset($v[$i]);            }       }       while(count($brr)){            $tmp = array_pop($brr);            echo $tmp . '-';            for ($j = 0;$j < count($arr[$tmp]);$j++){                $v[$arr[$tmp][$j]]--;                if($v[$arr[$tmp][$j]] == 0) $brr[] = $arr[$tmp][$j];            }       }    }    protected function maxLengthLogN($arr)    {        ini_set('memory_limit','400M');        ini_set("max_execution_time", "8");        if (!count($arr)) return 0;        $dd = 1;        $len[$dd] = $arr[0];        for ($i =1;$i < count($arr);$i++){            if ($arr[$i] > $len[$dd]){                $len[++$dd] = $arr[$i];            } else {                    $l =1;$r = $dd;$pos = 0;                    //二分查找                    while ($l <= $r){                        $j = ($l  + $r) >> 1;                            if($len[$j] < $arr[$i]){                                $pos = $j;                                $l = $j +1;                            } else{                                $r = $j - 1;//                                $pos = $r;                            }                    }                    $len[$pos +1] = $arr[$i];                }            }        return ($dd);    }    /**     * @param $arr     * @return int|mixed     *o(n*n)        最长上升子序列动态规划     */    protected function  maxLength($arr)    {        if (count($arr) ==0) return 0;        $dp = [];        $dp[0] =1;        $maxans = 1;        for ($i =1 ; $i < count($arr) ; $i++){            $dp[$i] = 1; //前面不符合自己就是1 默认是1            for ($j =0;$j <$i;$j++){                if($arr[$i] > $arr[$j]){                    $dp[$i] = max($dp[$i],$dp[$j] +1); //当前的                }            }            $maxans = max($maxans,$dp[$i]); //整体的        }        return $maxans;    }    /**     * @param $i     * @param $j     * @param $edist     * 编辑距离问题 回溯算法     *如果 a[i]与 b[j]匹配，我们递归考察 a[i+1]和 b[j+1]。     * 如果 a[i]与 b[j]不匹配，那我们有多种处理方式可选     * 可以删除 a[i]，然后递归考察 a[i+1]和 b[j]；     * 可以删除 b[j]，然后递归考察 a[i]和 b[j+1]；     * 可以在 a[i]前面添加一个跟 b[j]相同的字符，然后递归考察 a[i]和 b[j+1];     * 可以在 b[j]前面添加一个跟 a[i]相同的字符，然后递归考察 a[i+1]和 b[j]；     * 可以将 a[i]替换成 b[j]，或者将 b[j]替换成 a[i]，然后递归考察 a[i+1]和 b[j+1]。     */    //最短编辑距离    protected  $minDist = 100;//编辑距离    protected $n = 6;    protected $m = 7;    protected $a  = 'mitcmu';    protected $b = 'mtacnu7';    private function ideaDance($i,$j,$edist)    {        if($i == $this->n || $j == $this->m){            if ($i < $this->n)  $edist += ($this->n - $i);            if ($j < $this->m)  $edist += ($this->m - $j);            if ($edist < $this->minDist) $this->minDist = $edist;            return;        }        if(($this->a)[$i] == ($this->b)[$j]){            $this->ideaDance($i+1,$j+1,$edist);        } else {            $this->ideaDance($i + 1,$j,$edist +1);            $this->ideaDance($i ,$j + 1,$edist +1);            $this->ideaDance($i +1 ,$j + 1,$edist +1);        }    }    /**     * @param int $i     * @param int $j     * @param int $n     * @param int $distTmp     * @return int|mixed     *最短路径     */    private function minDistBT($i = 0,$j = 0,$n = 3,$distTmp = 0)    {        $arr =[            [5,3,5,9],            [2,1,3,4],            [5,2,6,7],            [6,8,4,3]        ];        if($i == $n  && $j == $n){            if ($distTmp < $this->dist){                $this->dist = $distTmp ;            }            return 0;        }        if($i <$n ){            $this->minDistBT($i +1,$j,$n,$distTmp+$arr[$i][$j]);        }        if($j <$n ){           $this->minDistBT($i ,$j + 1,$n,$distTmp+$arr[$i][$j]);        }        return $this->dist + $arr[$n][$n];    }    /**01背包w问题动态规划     * @param $weight 物品     * @param $n 物品个数     * @param $w 背包可以装的最大重量     * @return int 最大重量     */    private function knapsack($weight,$n,int $w)    {        for ($i = 0;$i < $n;$i++ ){            for ($j = 0;$j<= $w ;$j++){                $arr[$i][$j] = false;            }        }        $arr[0][0] = true; //第一个物品不放        if($weight[0] <= $w){            $arr[0][$weight[0]] = true; //第一个物品放        }        for ($i = 1 ;$i < $n ;$i++){ //从第二行开始            for($j = 0;$j <= $w;$j++){ //不把第i个物品放入背包                if($arr[$i -1][$j] == true) $arr[$i][$j] = true; //如果上一个物品放入了            }            for ($j = 0;$j <= $w -$weight[$i] ;$j++) {//把第二个物品放入背包所以背包里应该小于 $j+$weight[$i]                if($arr[$i -1][$j] == true) $arr[$i][$j + $weight[$i]] = true;            }        }        for ($i = 0;$i < count($arr);$i++){            echo $weight[$i].'-'.$i;            for ($j = 0;$j < count($arr[$i]);$j++){                if($arr[$i][$j]){                    print_r('  √');                } else {                    print_r('  ×');                }            }            print_r('</br>');        }        for ($i = $w ;$i>=0;$i--){            if ($arr[$n -1][$i] == true) {                $j = $i ;break;            }        }        //推导应该装那几个物品        $str ='';        for ($i  = $n -1;$i > 0 ;$i --){            //i行的值小于$j(总重)且上一列减去当前列的值的也是true            if ($j - $weight[$i] >= 0 && $arr[$i-1][$j - $weight[$i]] == true){               $str .=  $weight[$i] . '-';                $j = $j - $weight[$i];            }        }        if ($j != 0) $str .= $weight[0];        return $str;    }    /**     * @param $string     * @param $find     * @return int     * kmp匹配算法     */    private function kmp($string = '',$find = '')    {        $string = 'BABBBABABAAA';        $find = 'ABABA';        $next = [0,1,1,2,3];        //$next = [0,0,0,1,2];        $main = strlen($string);        $low = strlen($find);        $j = 0;        for ($i = 0;$i < $main ;$i++){            while( $j > 0 && $string[$i] != $find[$j]){                $j = $next[$j] -1;            }            if ($string[$i] == $find[$j]) $j++;            if ( $j == $low) return $i - $low +1;        }        return -1;    }    /**     * @param $row     * 8皇后问题     */    private function cal8queens($row,$arr)    {        if($row == 8){        $this->print_queens($arr);        }        for ($col = 0;$col <8 ;$col++){            if($this->isOk($row,$col,$arr)){                $arr[$row] = $col;                $this->cal8queens($row+1,$arr);            }        }    }    private function isOk($row,$col,$arr)    {        $leftUp = $col - 1; //左上        $rightUp = $col + 1; //右下        for($i = $row - 1;$i >= 0;$i--){            if($arr[$i] == $col) return false;            if ($leftUp >= 0){                if ($arr[$i] == $leftUp) return false;            }            if ($rightUp <=8){                if ($arr[$i] == $rightUp) return false;            }            $leftUp--;$rightUp++;         }        return true;    }    /**     * @param $result     * 打印二维矩阵     */    private function print_queens($result)    {        dd($result);    }    /**     * 深度优先搜索     * @param $map     * @param $start     * @param $end     * @return bool     */    protected  $found = false;    private function DFS($map,$start,$end)    {        $visited = $map;        $visited[$start] = true;        $prev = []; //走过的路径        for($i = 0 ;$i < count($map);$i++){            $prev[$i] = -1;        }        $this->singeDFS($map,$start,$end,$visited,$prev);        return $visited;    }    private function singeDFS($map,$i,$end ,&$visited,&$prev)    {        if($this->found == true) return true;        $visited[$i] = true;        if($i == $end) {            $this->found = true;            return true;        }        for ($j = 0 ; $j < count($map[$i]) ; $j++){                $q = $map[$i][$j];                print_r($q);                echo '</br>';                if($visited[$q] !== true){                    $prev[$q] = $i;                    $this->singeDFS($map,$q,$end,$visited,$prev);                }        }    }    /**     * 广度优先搜索类似于二叉树层次遍历 得到是最短路径     */    private  function BFS($map,$start,$end)    {        if ($start == $end) return false;        $visited = $map; //访问过的节点设置为true 防止进入循环        $visited[$start] = true;        $queue = []; //是一个队列，用来存储已经被访问、但相连的顶点还没有被访问的顶点        $queue =  array_merge($queue,$map[$start]);        $prev = []; //走过的路径 key 节点值 value 上一个节点        for($i = 0 ;$i < count($map);$i++){            $prev[$i] = -1;        }        while (count($queue) != 0) {            $w = array_shift($queue);            //$map[$w] = w定点所连的边            for ($i = 0 ;$i < count($map[$w]);$i++){                $q = $map[$w][$i]; //0                if($visited[$q] !== true) {                    $prev[$q] = $w;                    if($q == $end) {                        return $prev;                    }            }                $visited[$q] = true;                array_push($queue,$q);//讲这个节点相连的定点压入队列            }        }        return '$prev';    }    //堆排序 O(nlogn)    private  function heapSort($arr,$n)    {        $arr = $this->createHeap($arr,$n);        $i  = $n;        while ($i >1){            $tmp = $arr[1];            $arr[1] = $arr[$i];            $arr[$i] = $tmp;            $i--;//            dd($arr);            $this->heapify($arr,$i,1);        }        return $arr;    }    //建堆    private function createHeap($arr,$n)    {        //$i是需要堆化的第几个元素 第一个($arr[0])不堆化 (>>1)        /*         * 因为叶子节点往下堆化只能自己跟自己比较，所以我们直接从最后一个非叶子节点开始，依次堆化就行了。         */        for ($i = $n >>1;$i >= 1;$i--){            $this->heapify($arr,$n,$i);        }        return $arr;    }    /**     * @param $arr 数组     * @param $n 可以多少个节点     * @param $i 当前的节点位置,从此节点从上往下堆化     */    private function heapify(&$arr,$n,$i)    {        while(true){            $maxPos = $i;            if($i << 1 <=$n && $arr[$i] < $arr[$i * 2] ){                $maxPos = $i *2;            }            if(($i << 1) +1 <= $n && $arr[$maxPos] < $arr[$i * 2 +1]){                $maxPos = $i * 2 +1;            }            if($maxPos == $i){                break;            }            $tmp = $arr[$i];            $arr[$i] = $arr[$maxPos];            $arr[$maxPos] = $tmp;            $i = $maxPos;        }    }    private function  midSort($arr,$int)    {        $count = count($arr);        $low = 0 ;        $high = $count -1;        while($low <= $high){            $mid = $low + (($high - $low) >>1);//取mid            if($arr[$mid] > $int){                $high = $mid -1;            }else if($arr[$mid] < $int){                $low = $mid +1;            } else{//                if($mid == 0 || $arr[$mid -1] != $int) return $mid;  查找第一个等于给定值//                else $high = $mid -1;                /**                 * 查找最后一个等于给定值得元素                 */                if($mid == ($count -1) || $arr[$mid +1] != $int) return $mid;                    else $low = $mid +1;            }        }        return -1 ;    }    private function  findFirst($arr,$int)    {        $count = count($arr);        $low = 0 ;        $high = $count -1;        while($low <= $high){            $mid = $low + (($high - $low) >>1);//取mid            if($arr[$mid] > $int){//                if($mid ==0 || $arr[$mid -1] < $int) return $mid;//                else $high = $mid -1;                $high = $mid-1;            }else {                if($mid == $count - 1 || $arr[$mid + 1] > $int) return $mid;                else $low = $mid + 1;            }        }        return -1 ;    }}

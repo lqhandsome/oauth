@@ -41,3 +41,14 @@ Route::get('/freight', function () {
 Route::get('/responseFreight','Freight\IndexController@responseFreight');
 Route::get('/getAddress','Freight\IndexController@getAddress');
 Route::get('/getIp','Freight\IndexController@getIp');
+Route::get('/export','Freight\IndexController@export');
+Route::get('/exportTest','Freight\IndexController@exportTest');
+Route::get('/auth',function (){
+    return view('upload');
+});
+
+
+//use Illuminate\Support\Facades\DB;
+//Route::get('/mysql',function (){
+//    return  DB::connection('yuncut')->select('select * from systrade_trade limit 1');
+//});

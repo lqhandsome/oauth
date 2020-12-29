@@ -91,7 +91,7 @@
                 return YY + MM + DD +" "+hh + mm + ss;
             },
             add:function () {
-                this.count = this.count + 1
+                this.count = this.count + 2
             },
             changePageSize(val) {
                 console.log(val)
