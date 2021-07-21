@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 234);
+/******/ 	return __webpack_require__(__webpack_require__.s = 241);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -81302,22 +81302,29 @@ module.exports = function (css) {
 /* 231 */,
 /* 232 */,
 /* 233 */,
-/* 234 */
+/* 234 */,
+/* 235 */,
+/* 236 */,
+/* 237 */,
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(235);
+module.exports = __webpack_require__(242);
 
 
 /***/ }),
-/* 235 */
+/* 242 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_freight_app__ = __webpack_require__(236);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_freight_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_freight_app__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_discharge_app__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_discharge_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_discharge_app__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__indexRoutes__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_resource__ = __webpack_require__(111);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_element_ui__ = __webpack_require__(62);
@@ -81350,29 +81357,29 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_elem
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#app',
     router: __WEBPACK_IMPORTED_MODULE_2__indexRoutes__["a" /* default */],
-    components: { App: __WEBPACK_IMPORTED_MODULE_1__components_freight_app___default.a }
+    components: { App: __WEBPACK_IMPORTED_MODULE_1__components_discharge_app___default.a }
 });
 
 /***/ }),
-/* 236 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(237)
+  __webpack_require__(244)
 }
 var normalizeComponent = __webpack_require__(14)
 /* script */
-var __vue_script__ = __webpack_require__(239)
+var __vue_script__ = __webpack_require__(246)
 /* template */
-var __vue_template__ = __webpack_require__(240)
+var __vue_template__ = __webpack_require__(247)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-b8dfaae4"
+var __vue_scopeId__ = "data-v-560a58cd"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -81383,7 +81390,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/freight/app.vue"
+Component.options.__file = "resources/assets/js/components/discharge/app.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -81392,9 +81399,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-b8dfaae4", Component.options)
+    hotAPI.createRecord("data-v-560a58cd", Component.options)
   } else {
-    hotAPI.reload("data-v-b8dfaae4", Component.options)
+    hotAPI.reload("data-v-560a58cd", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -81405,23 +81412,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 237 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(238);
+var content = __webpack_require__(245);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(21)("415005cc", content, false, {});
+var update = __webpack_require__(21)("7f79a9ba", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b8dfaae4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./app.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b8dfaae4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./app.vue");
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-560a58cd\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./app.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-560a58cd\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./app.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -81431,7 +81438,7 @@ if(false) {
 }
 
 /***/ }),
-/* 238 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(16)(false);
@@ -81439,13 +81446,13 @@ exports = module.exports = __webpack_require__(16)(false);
 
 
 // module
-exports.push([module.i, "\n.validation[data-v-b8dfaae4]{\n    color: #5e5e5e;\n}\n#route-plan[data-v-b8dfaae4] {\n    width: 66%;\n    height:800px;\n    float:left\n}\n#form[data-v-b8dfaae4]{\n        width: 30%;\n        float:left;\n        margin-left: 10px;\n}\n.amap-copyright[data-v-b8dfaae4]{\n        display:none;\n        visibility:hidden;\n}\n.large-1[data-v-b8dfaae4] {\n        width: 100px;\n}\n.large-2[data-v-b8dfaae4]{\n        width: 80px;\n}\na[data-v-b8dfaae4] {\n     display: block;\n     float: left;\n     margin-right: 10px;\n}\n#select[data-v-b8dfaae4]{\n      width: 70%;\n}\n", ""]);
+exports.push([module.i, "\n.distance[data-v-560a58cd] {\n        color: #056;\n}\n.validation[data-v-560a58cd]{\n    color: #5e5e5e;\n}\n#route-plan[data-v-560a58cd] {\n    width: 66%;\n    height:800px;\n    float:left\n}\n#form[data-v-560a58cd]{\n        width: 30%;\n        float:left;\n        margin-left: 10px;\n}\n.amap-copyright[data-v-560a58cd]{\n        display:none;\n        visibility:hidden;\n}\n.large-1[data-v-560a58cd] {\n        width: 100px;\n}\n.large-2[data-v-560a58cd]{\n        width: 80px;\n}\na[data-v-560a58cd] {\n     display: block;\n     float: left;\n     margin-right: 10px;\n}\n#select[data-v-560a58cd]{\n      width: 70%;\n}\n.weight[data-v-560a58cd]{\n        width: 80px;height:34px;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 239 */
+/* 246 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81504,69 +81511,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
-// import Navigation from "../components/global/Navigation";
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
         // Navigation
@@ -81593,6 +81538,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             store: '',
             stateStoreAddress: '',
             stateUserAddress: '',
+            weights: [], //每个地方的卸货重量
+            weightsReturn: [],
             validations: {
                 address: {
                     is_valid: true,
@@ -81624,15 +81571,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         submitNewCafe: function submitNewCafe() {
-            if (this.validateNewCafe()) {
-                //逻辑代码
+            if (true) {
+                //逻辑代码获取各个地点的坐标
                 var _this = this;
-                axios.get('/responseFreight', {
+                axios.get('/responseWaypoints', {
                     params: {
                         address: this.address ? this.address : '', //发货地址
                         city: this.city ? this.city : '',
                         state: this.state ? this.state : this.stateStoreAddress, //是否select的数据
-                        addressTwo: this.addressTwo ? this.addressTwo : '', //收货地址
+                        addressTwo: this.autoSites ? this.autoSites : '', //收货地址
+                        weights: this.weights,
                         cityTwo: this.cityTwo ? this.cityTwo : '',
                         stateTwo: this.stateTwo ? this.stateTwo : this.stateUserAddress, //是否select的数据
                         siteState: this.siteState,
@@ -81641,7 +81589,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }
                 }).then(function (response) {
                     if (response.data.success) {
+                        //途经点
                         _this.waypoints = response.data.sites;
+                        //途经点对应的卸货重量
+                        _this.weightsReturn = response.data.weightsReturn;
                         _this.showMap(response.data.origin, response.data.destination);
                         _this.distanceCount = '距离是' + response.data.distance / 1000 + '公里';
                     } else {
@@ -81752,12 +81703,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             for (var i = 0, l = route.steps.length; i < l; i++) {
                 var step = route.steps[i];
-
                 for (var j = 0, n = step.path.length; j < n; j++) {
                     path.push(step.path[j]);
                 }
             }
-
             return path;
         },
         showMap: function showMap($origin, $destination) {
@@ -81787,13 +81736,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.path.push({ lnglat: [$origin[0], $origin[1]] }); //起点
             // this.path.push({lnglat:[116.321354, 39.896436]});//途径
             for (var i = 0; i < this.waypoints.length; i++) {
+                console.log(this.weightsReturn);
                 this.path.push({ lnglat: [this.waypoints[i].lat, this.waypoints[i].lng] });
                 var marker = new AMap.Marker({
                     position: new AMap.LngLat(this.waypoints[i].lat, this.waypoints[i].lng),
                     // offset: new AMap.Pixel(-23, -45),
                     // icon: icon,
                     icon: 'https://webapi.amap.com/theme/v1.3/markers/n/mark_bs.png',
-                    title: '途经点' + (i + 1)
+                    title: '途经点' + (i + 1) + ':卸货' + this.weightsReturn[i] + 'Kg'
                 });
                 markers.push(marker);
             }
@@ -81832,7 +81782,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     mounted: function mounted() {
         var _this = this;
-        axios.get('http://oauth.lqlovehai.com/getAddress').then(function (response) {
+        axios.get('http://oauth.lqlovehai.com/getCompanyAddress').then(function (response) {
             if (response.data.success) {
                 _this.storeAddress = response.data.data.storeAddress;
                 _this.userAddress = response.data.data.userAddress;
@@ -81864,7 +81814,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
             deep: true;
         }
-
     },
     filters: {
         formUserAd: function formUserAd(value) {
@@ -81876,14 +81825,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     computed: {
-        // selectSite () {
-        //     return function (value) {
-        //         if(value == 'manual'){
-        //             return true;
-        //         }
-        //         return false;
-        //     }
-        // },
         selectSite: function selectSite() {
             return function (value, key) {
                 if (value == 'manual') {
@@ -81894,16 +81835,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.siteAddress[key] = this.autoSites[key];
                     this.siteCity[key] = this.autoSites[key];
                 }
-
                 return false;
             };
         }
-
     }
 });
 
 /***/ }),
-/* 240 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -81944,16 +81883,12 @@ var render = function() {
               }
             }
           },
-          [
-            _c("option", { attrs: { value: "manual" } }, [_vm._v("手动输入")]),
-            _vm._v(" "),
-            _vm._l(_vm.storeAddress, function(storeAd) {
-              return _c("option", { domProps: { value: storeAd.address } }, [
-                _vm._v(" " + _vm._s(storeAd.firstAdress))
-              ])
-            })
-          ],
-          2
+          _vm._l(_vm.storeAddress, function(storeAd) {
+            return _c("option", { domProps: { value: storeAd.address } }, [
+              _vm._v(" " + _vm._s(storeAd.firstAdress))
+            ])
+          }),
+          0
         ),
         _vm._v(" "),
         _c(
@@ -81969,371 +81904,86 @@ var render = function() {
             ]
           },
           [
-            _c("h5", [_vm._v("请选择收货地址")]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
+            _c("div", [
+              _c("h5", [_vm._v("请选择一个收货地址")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.autoSites[0],
+                      expression: "autoSites[0]"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { id: "select" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.autoSites,
+                        0,
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                _vm._l(_vm.storeAddress, function(storeAd) {
+                  return _c(
+                    "option",
+                    { domProps: { value: storeAd.address } },
+                    [_vm._v(" " + _vm._s(storeAd.firstAdress))]
+                  )
+                }),
+                0
+              ),
+              _vm._v(" "),
+              _c("input", {
                 directives: [
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.stateUserAddress,
-                    expression: "stateUserAddress"
+                    value: _vm.weights[0],
+                    expression: "weights[0]"
                   }
                 ],
-                staticClass: "form-control",
-                attrs: { id: "select" },
+                staticClass: "weight",
+                attrs: { type: "text", placeholder: "卸货重量" },
+                domProps: { value: _vm.weights[0] },
                 on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.stateUserAddress = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.weights, 0, $event.target.value)
                   }
                 }
-              },
-              _vm._l(_vm.userAddress.list, function(userAd) {
-                return _c(
-                  "option",
-                  { domProps: { value: _vm._f("formUserAd")(userAd) } },
-                  [_vm._v(" " + _vm._s(_vm._f("formUserAd")(userAd)))]
-                )
               }),
-              0
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.isManual,
-                expression: "isManual"
-              }
-            ],
-            staticClass: "grid-container"
-          },
-          [
-            _c("h5", [_vm._v("发货地址")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "grid-x grid-padding-x" }, [
-              _c(
-                "div",
-                { staticClass: "large-1 medium-12 small-12 cell form-group" },
-                [
-                  _c("label", [
-                    _vm._v("State\n                        "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.state,
-                          expression: "state"
-                        }
-                      ],
-                      attrs: { type: "text", placeholder: "省份" },
-                      domProps: { value: _vm.state },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.state = $event.target.value
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: !_vm.validations.state.is_valid,
-                          expression: "!validations.state.is_valid"
-                        }
-                      ],
-                      staticClass: "validation"
-                    },
-                    [_vm._v(_vm._s(_vm.validations.state.text))]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "large-2 medium-12 small-12 cell form-group" },
-                [
-                  _c("label", [
-                    _vm._v("City\n                        "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.city,
-                          expression: "city"
-                        }
-                      ],
-                      attrs: { type: "text", placeholder: "城市" },
-                      domProps: { value: _vm.city },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.city = $event.target.value
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: !_vm.validations.city.is_valid,
-                          expression: "!validations.city.is_valid"
-                        }
-                      ],
-                      staticClass: "validation"
-                    },
-                    [_vm._v(_vm._s(_vm.validations.city.text))]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "large-3 medium-12 small-12 cell form-group" },
-                [
-                  _c("label", [
-                    _vm._v("Address\n                        "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.address,
-                          expression: "address"
-                        }
-                      ],
-                      attrs: { type: "text", placeholder: "地址" },
-                      domProps: { value: _vm.address },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.address = $event.target.value
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: !_vm.validations.address.is_valid,
-                          expression: "!validations.address.is_valid"
-                        }
-                      ],
-                      staticClass: "validation"
-                    },
-                    [_vm._v(_vm._s(_vm.validations.address.text))]
-                  )
-                ]
-              )
+              _vm._v("KG\n                ")
             ])
           ]
         ),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.isManual,
-                expression: "isManual"
-              }
-            ],
-            staticClass: "grid-container"
-          },
-          [
-            _c("h5", [_vm._v("收货地址")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "grid-x grid-padding-x" }, [
-              _c(
-                "div",
-                { staticClass: "large-1 medium-12 small-12 cell form-group" },
-                [
-                  _c("label", [
-                    _vm._v("State\n                        "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.stateTwo,
-                          expression: "stateTwo"
-                        }
-                      ],
-                      attrs: { type: "text", placeholder: "省份" },
-                      domProps: { value: _vm.stateTwo },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.stateTwo = $event.target.value
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: !_vm.validations.stateTwo.is_valid,
-                          expression: "!validations.stateTwo.is_valid"
-                        }
-                      ],
-                      staticClass: "validation"
-                    },
-                    [_vm._v(_vm._s(_vm.validations.stateTwo.text))]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "large-2 medium-12 small-12 cell form-group" },
-                [
-                  _c("label", [
-                    _vm._v("City\n                        "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.cityTwo,
-                          expression: "cityTwo"
-                        }
-                      ],
-                      attrs: { type: "text", placeholder: "城市" },
-                      domProps: { value: _vm.cityTwo },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.cityTwo = $event.target.value
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: !_vm.validations.cityTwo.is_valid,
-                          expression: "!validations.cityTwo.is_valid"
-                        }
-                      ],
-                      staticClass: "validation"
-                    },
-                    [_vm._v(_vm._s(_vm.validations.cityTwo.text))]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "large-3 medium-12 small-12 cell form-group" },
-                [
-                  _c("label", [
-                    _vm._v("Address\n                        "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.addressTwo,
-                          expression: "addressTwo"
-                        }
-                      ],
-                      attrs: { type: "text", placeholder: "地址" },
-                      domProps: { value: _vm.addressTwo },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.addressTwo = $event.target.value
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: !_vm.validations.addressTwo.is_valid,
-                          expression: "!validations.addressTwo.is_valid"
-                        }
-                      ],
-                      staticClass: "validation"
-                    },
-                    [_vm._v(_vm._s(_vm.validations.addressTwo.text))]
-                  )
-                ]
-              )
-            ])
-          ]
-        ),
+        _vm._m(0),
         _vm._v(" "),
         _c(
           "div",
           { attrs: { id: "other" } },
           _vm._l(_vm.sites, function(item, i) {
             return _c("div", { staticClass: "grid-container" }, [
-              _c("p", [_vm._v("途经点" + _vm._s(i + 1))]),
+              _c("p", [_vm._v("新增卸货点" + _vm._s(i + 1))]),
               _vm._v(" "),
               _c("div", [
                 _c(
@@ -82343,8 +81993,8 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.autoSites[i],
-                        expression: "autoSites[i]"
+                        value: _vm.autoSites[i + 1],
+                        expression: "autoSites[i + 1]"
                       }
                     ],
                     staticClass: "form-control",
@@ -82361,7 +82011,7 @@ var render = function() {
                           })
                         _vm.$set(
                           _vm.autoSites,
-                          i,
+                          i + 1,
                           $event.target.multiple
                             ? $$selectedVal
                             : $$selectedVal[0]
@@ -82369,182 +82019,39 @@ var render = function() {
                       }
                     }
                   },
-                  [
-                    _c("option", { attrs: { value: "manual" } }, [
-                      _vm._v("手动输入")
-                    ]),
-                    _vm._v(" "),
-                    _vm._l(_vm.storeAddress, function(storeAd) {
-                      return _c(
-                        "option",
-                        { domProps: { value: storeAd.address } },
-                        [_vm._v(" " + _vm._s(storeAd.firstAdress))]
-                      )
-                    })
-                  ],
-                  2
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
+                  _vm._l(_vm.storeAddress, function(storeAd) {
+                    return _c(
+                      "option",
+                      { domProps: { value: storeAd.address } },
+                      [_vm._v(" " + _vm._s(storeAd.firstAdress))]
+                    )
+                  }),
+                  0
+                ),
+                _vm._v(" "),
+                _c("input", {
                   directives: [
                     {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.selectSite(_vm.autoSites[i], i),
-                      expression: "selectSite(autoSites[i],i)"
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.weights[i + 1],
+                      expression: "weights[i+1]"
                     }
                   ],
-                  staticClass: "grid-x grid-padding-x"
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "large-1 medium-12 small-12 cell form-group"
-                    },
-                    [
-                      _c("label", [
-                        _vm._v("State\n                            "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.siteState[i],
-                              expression: "siteState[i]"
-                            }
-                          ],
-                          attrs: { type: "text", placeholder: "省份" },
-                          domProps: { value: _vm.siteState[i] },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.siteState, i, $event.target.value)
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: !_vm.validations.stateTwo.is_valid,
-                              expression: "!validations.stateTwo.is_valid"
-                            }
-                          ],
-                          staticClass: "validation"
-                        },
-                        [_vm._v(_vm._s())]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "large-2 medium-12 small-12 cell form-group"
-                    },
-                    [
-                      _c("label", [
-                        _vm._v("City\n                            "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.siteCity[i],
-                              expression: "siteCity[i]"
-                            }
-                          ],
-                          attrs: { type: "text", placeholder: "城市" },
-                          domProps: { value: _vm.siteCity[i] },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.siteCity, i, $event.target.value)
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: !_vm.validations.cityTwo.is_valid,
-                              expression: "!validations.cityTwo.is_valid"
-                            }
-                          ],
-                          staticClass: "validation"
-                        },
-                        [_vm._v(_vm._s())]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "large-3 medium-12 small-12 cell form-group"
-                    },
-                    [
-                      _c("label", [
-                        _vm._v("Address\n                            "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.siteAddress[i],
-                              expression: "siteAddress[i]"
-                            }
-                          ],
-                          attrs: { type: "text", placeholder: "地址" },
-                          domProps: { value: _vm.siteAddress[i] },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.siteAddress, i, $event.target.value)
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: !_vm.validations.addressTwo.is_valid,
-                              expression: "!validations.addressTwo.is_valid"
-                            }
-                          ],
-                          staticClass: "validation"
-                        },
-                        [_vm._v(_vm._s())]
-                      )
-                    ]
-                  )
-                ]
-              )
+                  staticClass: "weight",
+                  attrs: { type: "text", placeholder: "卸货重量" },
+                  domProps: { value: _vm.weights[i + 1] },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.weights, i + 1, $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v("KG\n                    ")
+              ])
             ])
           }),
           0
@@ -82573,22 +82080,12 @@ var render = function() {
             attrs: { href: "javascript:void 0;" },
             on: { click: _vm.addForm }
           },
-          [_vm._v("增加一个途经点")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "btn btn-danger",
-            attrs: { href: "javascript:void 0;" },
-            on: { click: _vm.deleteForm }
-          },
-          [_vm._v("删除一个途经点")]
+          [_vm._v("增加一个卸货点")]
         ),
         _vm._v(" "),
         _c("br"),
         _vm._v(" "),
-        _c("h3", { staticStyle: { color: "#056" } }, [
+        _c("h3", { staticClass: "distance" }, [
           _vm._v(_vm._s(_vm.distanceCount))
         ])
       ])
@@ -82599,13 +82096,34 @@ var render = function() {
     _c("div", { attrs: { id: "test" } })
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("h5", [_vm._v("请选择规划方式")]),
+      _vm._v(" "),
+      _c(
+        "select",
+        { staticClass: "form-control", attrs: { v: "", id: "select" } },
+        [
+          _c("option", [_vm._v(" 路程最短优先")]),
+          _vm._v(" "),
+          _c("option", [_vm._v(" 运费最低优先")]),
+          _vm._v(" "),
+          _c("option", [_vm._v(" 时间最快优先")])
+        ]
+      )
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-b8dfaae4", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-560a58cd", module.exports)
   }
 }
 

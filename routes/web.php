@@ -38,6 +38,27 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/freight', function () {
     return view('freight');
 });
+Route::get('/discharge', function () {
+    return view('discharge');
+});
 Route::get('/responseFreight','Freight\IndexController@responseFreight');
 Route::get('/getAddress','Freight\IndexController@getAddress');
+
+Route::get('/getCompanyAddress','Freight\FreightDistance@getCompanyAddress');
+Route::get('/responseWaypoints','Freight\FreightDistance@responseFreight');
+Route::get('/minRoad','Freight\FreightDistance@minRoad');
+
+
 Route::get('/getIp','Freight\IndexController@getIp');
+Route::get('/export','Freight\IndexController@export');
+Route::get('/exportTest','Freight\IndexController@exportTest');
+Route::get('/auth',function (){
+    return view('upload');
+});
+Route::get('/algorithm ','Tree\TreeController@index');
+
+
+//use Illuminate\Support\Facades\DB;
+//Route::get('/mysql',function (){
+//    return  DB::connection('yuncut')->select('select * from systrade_trade limit 1');
+//});

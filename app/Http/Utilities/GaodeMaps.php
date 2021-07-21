@@ -16,7 +16,7 @@ class GaodeMaps
         //是否批量获取
         $addressA ='';
         if(is_array($address)) {
-            for ($i =0;$i < count($address)  ;$i++) {
+            for ($i = 0;$i < count($address)  ;$i++) {
                 $addressA .= $state[$i] . $city[$i] . $address[$i] . '|';
             }
         } else {
@@ -62,7 +62,7 @@ class GaodeMaps
     /**
      * 返回两个坐标的货车行驶距离
      */
-    public static function distance($origin,$destination,$sites)
+    public static function distance($origin,$destination,$sites = '')
     {
         // Web 服务 API Key
         $apiKey = config('services.gaode.ws_api_key');
@@ -86,7 +86,6 @@ class GaodeMaps
                 'waypoints' => $waypoints,//途经点
             ]
         ]);
-//        dd(json_decode($res->getBody()));
         $res =  json_decode($res->getBody());
         return $res;
 

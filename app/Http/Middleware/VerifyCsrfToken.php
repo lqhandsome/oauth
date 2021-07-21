@@ -14,5 +14,6 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         //
         'http://oauth.lqlovehai.com/response',
+        'http://oauth.lqlovehai.com/minRoad',
     ];
 }
